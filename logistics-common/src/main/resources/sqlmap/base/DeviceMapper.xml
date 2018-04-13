@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winterframework.logistics.common.entity.Device">
+	<resultMap id="BaseResultMap"
+		type="com.winterframework.logistics.common.entity.Device">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="number" jdbcType="VARCHAR" property="number" />
+		<result column="model" jdbcType="VARCHAR" property="model" />
+		<result column="battery" jdbcType="INTEGER" property="battery" />
+		<result column="onff" jdbcType="INTEGER" property="onff" />
+		<result column="onff_time" jdbcType="BIGINT" property="onffTime" />
+		<result column="location" jdbcType="VARCHAR" property="location" />
+		<result column="location_freq" jdbcType="INTEGER" property="locationFreq" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="remark" jdbcType="VARCHAR" property="remark" />
+		<result column="creator_id" jdbcType="INTEGER" property="creatorId" />
+		<result column="create_time" jdbcType="BIGINT" property="createTime" />
+		<result column="updator_id" jdbcType="INTEGER" property="updatorId" />
+		<result column="update_time" jdbcType="BIGINT" property="updateTime" />
+		<result column="company_id" jdbcType="INTEGER" property="companyId" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, number, model, battery, onff, onff_time,
+		location,location_freq, status, remark,
+		creator_id,create_time,
+		updator_id, update_time,company_id
+	</sql>
+
+	<select id="getByAttribute" parameterType="com.winterframework.logistics.common.entity.Device"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_device
+		where true
+		<if test="id != null">
+			and id = #{id,jdbcType=INTEGER}
+		</if>
+		<if test="number != null">
+			and number = #{number,jdbcType=VARCHAR}
+		</if>
+		<if test="model != null">
+			and model = #{model,jdbcType=VARCHAR}
+		</if>
+		<if test="battery != null">
+			and battery = #{battery,jdbcType=INTEGER}
+		</if>
+		<if test="onff != null">
+			and onff = #{onff,jdbcType=INTEGER}
+		</if>
+		<if test="onffTime != null">
+			and onff_time = #{onffTime,jdbcType=BIGINT}
+		</if>
+		<if test="location != null">
+			and location = #{location,jdbcType=VARCHAR}
+		</if>
+		<if test="status != null">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="remark != null">
+			and remark = #{remark,jdbcType=VARCHAR}
+		</if>
+		<if test="creatorId != null">
+			and creator_id = #{creatorId,jdbcType=INTEGER}
+		</if>
+		<if test="createTime != null">
+			and create_time = #{createTime,jdbcType=BIGINT}
+		</if>
+		<if test="updatorId != null">
+			and updator_id = #{updatorId,jdbcType=INTEGER}
+		</if>
+		<if test="updateTime != null">
+			and update_time = #{updateTime,jdbcType=BIGINT}
+		</if>
+		<if test="companyId != null">
+			and company_id = #{companyId,jdbcType=INTEGER}
+		</if>
+		order by id desc
+	</select>
+
+	<select id="getBySearchCode" parameterType="com.winterframework.logistics.common.entity.Device"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_device
+		where true
+		<if test="companyId != null">
+			and company_id = #{companyId,jdbcType=INTEGER}
+		</if>
+		<if test="number != null">
+			 <![CDATA[  
+	        and number like concat(concat('%',#{number}),'%')
+	        ]]>
+		</if>
+		order by id desc
+	</select>
+
+	<select id="getCountByCode" parameterType="com.winterframework.logistics.common.entity.Device"
+		resultType="java.lang.Integer">
+		select count(*)
+		from lm_device
+		where true
+		<if test="companyId != null">
+			and company_id = #{companyId,jdbcType=INTEGER}
+		</if>
+		<if test="number != null">
+			 <![CDATA[  
+	        and number like concat(concat('%',#{number}),'%')
+	        ]]>
+		</if>
+	</select>
+
+	<select id="getCountByAttribute" parameterType="com.winterframework.logistics.common.entity.Device"
+		resultType="java.lang.Integer">
+		select count(*)
+		from lm_device
+		where true
+		<if test="id != null">
+			and id = #{id,jdbcType=INTEGER}
+		</if>
+		<if test="number != null">
+			and number = #{number,jdbcType=VARCHAR}
+		</if>
+		<if test="model != null">
+			and model = #{model,jdbcType=VARCHAR}
+		</if>
+		<if test="battery != null">
+			and battery = #{battery,jdbcType=INTEGER}
+		</if>
+		<if test="onff != null">
+			and onff = #{onff,jdbcType=INTEGER}
+		</if>
+		<if test="onffTime != null">
+			and onff_time = #{onffTime,jdbcType=BIGINT}
+		</if>
+		<if test="location != null">
+			and location = #{location,jdbcType=VARCHAR}
+		</if>
+		<if test="status != null">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="remark != null">
+			and remark = #{remark,jdbcType=VARCHAR}
+		</if>
+		<if test="creatorId != null">
+			and creator_id = #{creatorId,jdbcType=INTEGER}
+		</if>
+		<if test="createTime != null">
+			and create_time = #{createTime,jdbcType=BIGINT}
+		</if>
+		<if test="updatorId != null">
+			and updator_id = #{updatorId,jdbcType=INTEGER}
+		</if>
+		<if test="updateTime != null">
+			and update_time = #{updateTime,jdbcType=BIGINT}
+		</if>
+		<if test="companyId != null">
+			and company_id = #{companyId,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<select id="getByNumber" parameterType="String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_device
+		<if test="_parameter != null">
+			where number = #{number}
+		</if>
+	</select>
+
+	<select id="getListByNumbers" parameterType="java.util.List"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_device
+		where number in
+		<foreach close=")" collection="list" index="index" item="item"
+			open="(" separator=",">
+			#{item}
+		</foreach>
+	</select>
+
+	<delete id="delete" parameterType="long">
+		delete from lm_device
+		where id
+		= #{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.winterframework.logistics.common.entity.Device">
+		insert into lm_device
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="number != null">
+				number,
+			</if>
+			<if test="model != null">
+				model,
+			</if>
+			<if test="battery != null">
+				battery,
+			</if>
+			<if test="onff != null">
+				onff,
+			</if>
+			<if test="onffTime != null">
+				onff_time,
+			</if>
+			<if test="location != null">
+				location,
+			</if>
+			<if test="locationFreq != null">
+				location_freq,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="creatorId != null">
+				creator_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updatorId != null">
+				updator_id,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="companyId != null">
+				company_id
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="number != null">
+				#{number,jdbcType=VARCHAR},
+			</if>
+			<if test="model != null">
+				#{model,jdbcType=VARCHAR},
+			</if>
+			<if test="battery != null">
+				#{battery,jdbcType=INTEGER},
+			</if>
+			<if test="onff != null">
+				#{onff,jdbcType=INTEGER},
+			</if>
+			<if test="onffTime != null">
+				#{onffTime,jdbcType=BIGINT},
+			</if>
+			<if test="location != null">
+				#{location,jdbcType=VARCHAR},
+			</if>
+			<if test="locationFreq != null">
+				#{locationFreq,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="creatorId != null">
+				#{creatorId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=BIGINT},
+			</if>
+			<if test="updatorId != null">
+				#{updatorId,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=BIGINT},
+			</if>
+			<if test="companyId != null">
+				#{companyId,jdbcType=INTEGER}
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="com.winterframework.logistics.common.entity.Device">
+		update lm_device
+		<set>
+			<if test="number != null">
+				number = #{number,jdbcType=VARCHAR},
+			</if>
+			<if test="model != null">
+				model = #{model,jdbcType=VARCHAR},
+			</if>
+			<if test="battery != null">
+				battery = #{battery,jdbcType=INTEGER},
+			</if>
+			<if test="onff != null">
+				onff = #{onff,jdbcType=INTEGER},
+			</if>
+			<if test="onffTime != null">
+				onff_time = #{onffTime,jdbcType=BIGINT},
+			</if>
+			<if test="location != null">
+				location = #{location,jdbcType=VARCHAR},
+			</if>
+			<if test="locationFreq != null">
+				location_freq = #{locationFreq,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="creatorId != null">
+				creator_id = #{creatorId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=BIGINT},
+			</if>
+			<if test="updatorId != null">
+				updator_id = #{updatorId,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=BIGINT},
+			</if>
+			<if test="companyId != null">
+				company_id = #{companyId,jdbcType=INTEGER}
+			</if>
+		</set>
+		where true
+		<if test="id != null">
+			and id= #{id,jdbcType=INTEGER}
+		</if>
+		<if test="number != null">
+			and number = #{number,jdbcType=VARCHAR}
+		</if>
+	</update>
+	<select id="getListByStatus" parameterType="Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_device
+		where status= #{status,jdbcType=INTEGER}
+	</select>
+
+</mapper>

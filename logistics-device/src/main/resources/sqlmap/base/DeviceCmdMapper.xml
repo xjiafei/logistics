@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="com.winterframework.logistics.device.entity.DeviceCmd">
+	<resultMap id="BaseResultMap" type="com.winterframework.logistics.device.entity.DeviceCmd">
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+	        	id as id,
+	        	imei as imei,
+	        	model as model,
+	        	function as function,
+	        	function_desc as functionDesc,
+	        	data as data,
+	        	save as save,
+	        	reply as reply,
+	        	command as command,
+	        	exec_mode as execMode,
+	        	exec_cron as execCron,
+	        	exec_status as execStatus,
+	        	exec_time as execTime,
+	        	exec_count as execCount,
+	        	status as status,
+	        	remark as remark,
+	        	creator_id as creatorId,
+	        	create_time as createTime,
+	        	updator_id as updatorId,
+	        	update_time as updateTime
+	</sql>
+		<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+		<insert id="insert" parameterType="com.winterframework.logistics.device.entity.DeviceCmd" 
+			useGeneratedKeys="true" keyProperty="id" 
+		 flushCache="true">
+	        INSERT INTO
+	        lm_device_cmd (
+	        	imei ,
+	        	model ,
+	        	function ,
+	        	function_desc ,
+	        	data,
+	        	save,
+	        	reply,
+	        	command,
+	        	exec_mode,
+	        	exec_cron,
+	        	exec_status,
+	        	exec_time ,
+	        	exec_count,
+	        	status,
+	        	remark ,
+	        	creator_id ,
+	        	create_time
+	        ) VALUES (
+	        	#{imei,javaType=string,jdbcType=VARCHAR} ,
+	        	#{model,javaType=string,jdbcType=VARCHAR} ,
+	        	#{function,javaType=string,jdbcType=VARCHAR} ,
+	        	#{functionDesc,javaType=string,jdbcType=VARCHAR} ,
+	        	#{data,javaType=string,jdbcType=VARCHAR} ,
+	        	#{save,javaType=integer,jdbcType=INTEGER} ,
+	        	#{reply,javaType=integer,jdbcType=INTEGER} ,
+	        	#{command,javaType=string,jdbcType=VARCHAR} ,
+	        	#{execMode,javaType=integer,jdbcType=INTEGER} ,
+	        	#{execCron,javaType=string,jdbcType=VARCHAR} ,
+	        	#{execStatus,javaType=integer,jdbcType=INTEGER} ,
+	        	#{execTime,javaType=long,jdbcType=DECIMAL} ,
+	        	#{execCount,javaType=integer,jdbcType=INTEGER} ,
+	        	#{status,javaType=integer,jdbcType=INTEGER} ,
+	        	#{remark,javaType=string,jdbcType=VARCHAR} ,
+	        	#{creatorId,javaType=long,jdbcType=DECIMAL} ,
+	        	#{createTime,javaType=long,jdbcType=DECIMAL} 
+	        )
+		</insert>
+	    
+		<update id="update" parameterType="com.winterframework.logistics.device.entity.DeviceCmd">
+	    <![CDATA[
+	        UPDATE lm_device_cmd SET
+		        imei = #{imei,javaType=string,jdbcType=VARCHAR} ,
+	        	model =#{model,javaType=string,jdbcType=VARCHAR} ,
+	        	function =#{function,javaType=string,jdbcType=VARCHAR} ,
+	        	function_desc =#{functionDesc,javaType=string,jdbcType=VARCHAR} ,
+	        	data=#{data,javaType=string,jdbcType=VARCHAR} ,
+	        	save =#{save,javaType=integer,jdbcType=INTEGER} ,
+	        	reply =#{reply,javaType=integer,jdbcType=INTEGER} ,
+	        	command =#{command,javaType=string,jdbcType=VARCHAR} ,
+	        	exec_mode =#{execMode,javaType=integer,jdbcType=INTEGER} ,
+	        	exec_cron =#{execCron,javaType=string,jdbcType=VARCHAR} ,
+	        	exec_status =#{execStatus,javaType=integer,jdbcType=INTEGER} ,
+	        	exec_time =#{execTime,javaType=long,jdbcType=DECIMAL} ,
+	        	exec_count =#{execCount,javaType=integer,jdbcType=INTEGER} ,
+	        	status =#{status,javaType=integer,jdbcType=INTEGER} ,
+	        	remark =#{remark,javaType=string,jdbcType=VARCHAR} ,
+		        updator_id = #{updatorId,javaType=long,jdbcType=DECIMAL} ,
+		        update_time = #{updateTime,javaType=long,jdbcType=DECIMAL}
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+		</update>
+	   <delete id="delete" parameterType="java.lang.Long">
+	        delete from lm_device_cmd where id = #{id} 
+	    </delete>   
+	    <select id="getById" parameterType="long" resultMap="BaseResultMap" flushCache="false">
+			select <include refid="Base_Column_List" />
+		    <![CDATA[
+			    from lm_device_cmd 
+		        where 
+		        id = #{id} 
+		    ]]>
+		</select>	
+		<select id="getByIds" parameterType="list"  resultMap="BaseResultMap" flushCache="false">
+			select <include refid="Base_Column_List" />
+			    from lm_device_cmd 
+		        where id in
+				<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+#{item}				</foreach>					
+		</select>	
+		<select id="getEarliestOneByImeiAndFunctionAndExecStatus" parameterType="hashmap" resultMap="BaseResultMap">
+	        select 
+		    <include refid="Base_Column_List" />
+		    from lm_device_cmd
+		    where status=1
+		    	and imei=#{imei,jdbcType=VARCHAR}
+		    	and function=#{function,jdbcType=VARCHAR}
+		    	and exec_status in
+				<foreach item="item" index="index" collection="execStatusList" open="(" separator="," close=")">
+					#{item}				
+				</foreach>	
+		    order by create_time asc
+		    limit 1
+		  </select>
+		  <select id="getImeisByExecStatus" parameterType="list"  resultType="string" flushCache="false">
+			select distinct imei
+			    from lm_device_cmd 
+		        where  status=1
+		        	and exec_status in
+				<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+					#{item}				
+				</foreach>					
+		</select>
+		<select id="getListByImeiAndExecStatus" parameterType="hashmap"  resultMap="BaseResultMap" flushCache="false">
+			select <include refid="Base_Column_List" />
+			    from lm_device_cmd 
+		        where status=1
+		        	and imei=#{imei,jdbcType=VARCHAR}
+		        	and exec_status in
+				<foreach item="item" index="index" collection="execStatusList" open="(" separator="," close=")">
+					#{item}				
+				</foreach>
+				order by create_time asc					
+		</select>
+		
+		
+		  
+		
+</mapper>

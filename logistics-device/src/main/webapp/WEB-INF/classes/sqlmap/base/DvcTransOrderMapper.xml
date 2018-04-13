@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winterframework.logistics.common.entity.TransOrder">
+  <select id="getByDeviceNumberAndTime" parameterType="hashmap" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lm_trans_order
+    where status=1 
+    	and device_number = #{deviceNumber,jdbcType=VARCHAR}
+    	and start_time<![CDATA[<]]>#{time ,jdbcType=DECIMAL} and (finish_time is null or finish_time>#{time ,jdbcType=DECIMAL})
+    limit 1
+  </select>
+  
+</mapper>

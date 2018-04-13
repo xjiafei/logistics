@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winterframework.logistics.common.entity.Role">
+	<resultMap id="BaseResultMap"
+		type="com.winterframework.logistics.common.entity.Role">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="remark" jdbcType="VARCHAR" property="remark" />
+		<result column="creator_id" jdbcType="INTEGER" property="creatorId" />
+		<result column="create_time" jdbcType="BIGINT" property="createTime" />
+		<result column="updator_id" jdbcType="INTEGER" property="updatorId" />
+		<result column="update_time" jdbcType="BIGINT" property="updateTime" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, name, status, remark, creator_id, create_time, updator_id,
+		update_time
+	</sql>
+
+	<select id="getByAttribute" parameterType="com.winterframework.logistics.common.entity.Role"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_role
+		<if test="id != null">
+			where id = #{id,jdbcType=INTEGER}
+		</if>
+		order by id desc
+	</select>
+
+	<delete id="delete" parameterType="long">
+		delete from lm_role
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.winterframework.logistics.common.entity.Role">
+		insert into lm_role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="creatorId != null">
+				creator_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updatorId != null">
+				updator_id,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="creatorId != null">
+				#{creatorId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=BIGINT},
+			</if>
+			<if test="updatorId != null">
+				#{updatorId,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=BIGINT},
+			</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="com.winterframework.logistics.common.entity.Role">
+		update lm_role
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="creatorId != null">
+				creator_id = #{creatorId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=BIGINT},
+			</if>
+			<if test="updatorId != null">
+				updator_id = #{updatorId,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=BIGINT},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>

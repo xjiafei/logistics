@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winterframework.logistics.portal.entity.Company">
+	<resultMap id="BaseResultMap"
+		type="com.winterframework.logistics.portal.entity.Company">
+	</resultMap>
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		id, name, logo, intro, philo, cooper, home_pics as
+		homePics, remark, creator_id as creatorId,
+		create_time as createTime,
+		updator_id as updatorId, update_time as updateTime
+	</sql>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="BaseResultMap"
+		flushCache="false">
+		select
+		<include refid="Base_Column_List" />
+		from pt_company
+		where id = #{id}
+	</select>
+
+	<select id="getByIds" parameterType="list" resultMap="BaseResultMap"
+		flushCache="false">
+		select
+		<include refid="Base_Column_List" />
+		from pt_company
+		where id in
+		<foreach item="item" index="index" collection="list" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+		order by create_time desc
+	</select>
+
+	<delete id="delete" parameterType="java.lang.Long">
+		delete from pt_company
+		where id
+		= #{id}
+	</delete>
+
+	<insert id="insert" parameterType="com.winterframework.logistics.portal.entity.Company"
+		useGeneratedKeys="true" keyProperty="id" flushCache="true">
+		insert into
+		pt_company (id, name, logo,
+		intro, philo, cooper,
+		home_pics, remark,
+		creator_id,
+		create_time, updator_id, update_time
+		)
+		values
+		(#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		#{logo,jdbcType=VARCHAR},
+		#{intro,jdbcType=VARCHAR},
+		#{philo,jdbcType=VARCHAR}, #{cooper,jdbcType=VARCHAR},
+		#{homePics,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},
+		#{creatorId,jdbcType=INTEGER},
+		#{createTime,jdbcType=BIGINT},
+		#{updatorId,jdbcType=INTEGER}, #{updateTime,jdbcType=BIGINT}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.winterframework.logistics.portal.entity.Company">
+		update pt_company
+		<set>
+		<if test="name != null">
+			name = #{name,jdbcType=VARCHAR},
+		</if>
+		<if test="logo != null">
+			logo = #{logo,jdbcType=VARCHAR},
+		</if>
+		<if test="intro != null">
+			intro = #{intro,jdbcType=VARCHAR},
+		</if>
+		<if test="philo != null">
+			philo = #{philo,jdbcType=VARCHAR},
+		</if>
+		<if test="cooper != null">
+			cooper = #{cooper,jdbcType=VARCHAR},
+		</if>
+		<if test="homePics != null">
+			home_pics = #{homePics,jdbcType=VARCHAR},
+		</if>
+		<if test="remark != null">
+			remark = #{remark,jdbcType=VARCHAR},
+		</if>
+		<if test="creatorId != null">
+			creator_id = #{creatorId,jdbcType=INTEGER},
+		</if>
+		<if test="createTime != null">
+			create_time = #{createTime,jdbcType=BIGINT},
+		</if>
+		<if test="updatorId != null">
+			updator_id = #{updatorId,jdbcType=INTEGER},
+		</if>
+		<if test="updateTime != null">
+			update_time = #{updateTime,jdbcType=BIGINT}
+		</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

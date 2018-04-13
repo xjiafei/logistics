@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winterframework.logistics.common.entity.TransOrder">
+	<resultMap id="BaseResultMap"
+		type="com.winterframework.logistics.common.entity.TransOrder">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="device_number" jdbcType="VARCHAR" property="deviceNumber" />
+		<result column="carrier_number" jdbcType="VARCHAR" property="carrierNumber" />
+		<result column="bill_number" jdbcType="VARCHAR" property="billNumber" />
+		<result column="origin" jdbcType="VARCHAR" property="origin" />
+		<result column="destination" jdbcType="VARCHAR" property="destination" />
+		<result column="location_freq_type" jdbcType="INTEGER" property="locationFreqType" />
+		<result column="location_freq" jdbcType="INTEGER" property="locationFreq" />
+		<result column="trans_mode" jdbcType="INTEGER" property="transMode" />
+		<result column="trans_status" jdbcType="INTEGER" property="transStatus" />
+		<result column="start_time" jdbcType="BIGINT" property="startTime" />
+		<result column="finish_time" jdbcType="BIGINT" property="finishTime" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="remark" jdbcType="VARCHAR" property="remark" />
+		<result column="creator_id" jdbcType="INTEGER" property="creatorId" />
+		<result column="create_time" jdbcType="BIGINT" property="createTime" />
+		<result column="updator_id" jdbcType="INTEGER" property="updatorId" />
+		<result column="update_time" jdbcType="BIGINT" property="updateTime" />
+		<result column="container_id" jdbcType="VARCHAR" property="containerId" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, device_number, carrier_number, bill_number, origin,
+		destination,location_freq_type, location_freq,trans_mode,
+		trans_status, start_time, finish_time, status, remark, creator_id,
+		create_time, updator_id,
+		update_time,container_id
+	</sql>
+
+	<select id="getByAttribute"
+		parameterType="com.winterframework.logistics.common.entity.TransOrder"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_trans_order where true
+		<if test="transStatus != null">
+			and trans_status = #{transStatus,jdbcType=INTEGER}
+		</if>
+		<if test="id != null">
+			and id = #{id,jdbcType=INTEGER}
+		</if>
+		<if test="deviceNumber != null">
+			and device_number = #{deviceNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="carrierNumber != null">
+			and carrier_number = #{carrierNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="billNumber != null">
+			and bill_number = #{billNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="origin != null">
+			and origin = #{origin,jdbcType=VARCHAR}
+		</if>
+		<if test="destination != null">
+			and destination = #{destination,jdbcType=VARCHAR}
+		</if>
+		<if test="locationFreqType != null">
+			and location_freq_type =#{locationFreqType,jdbcType=INTEGER}
+		</if>
+		<if test="locationFreq != null">
+			and location_freq = #{locationFreq,jdbcType=INTEGER}
+		</if>
+		<if test="transMode != null">
+			and trans_mode = #{transMode,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null">
+			and start_time = #{startTime,jdbcType=BIGINT}
+		</if>
+		<if test="finishTime != null">
+			and finish_time = #{finishTime,jdbcType=BIGINT}
+		</if>
+		<if test="status != null">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="remark != null">
+			and remark = #{remark,jdbcType=VARCHAR}
+		</if>
+		<if test="creatorId != null">
+			and creator_id = #{creatorId,jdbcType=INTEGER}
+		</if>
+		<if test="createTime != null">
+			and create_time = #{createTime,jdbcType=BIGINT}
+		</if>
+		<if test="updatorId != null">
+			and updator_id = #{updatorId,jdbcType=INTEGER}
+		</if>
+		<if test="updateTime != null">
+			and update_time = #{updateTime,jdbcType=BIGINT}
+		</if>
+		<if test="containerId != null">
+			and container_id = #{containerId,jdbcType=VARCHAR}
+		</if>
+		order by create_time desc
+	</select>
+	
+	<select id="getHistoryByAttribute"
+		parameterType="com.winterframework.logistics.common.entity.TransOrder"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_trans_order where true
+		<if test="transStatus != null">
+			and trans_status = #{transStatus,jdbcType=INTEGER}
+		</if>
+		<if test="id != null">
+			and id = #{id,jdbcType=INTEGER}
+		</if>
+		<if test="deviceNumber != null">
+			and device_number = #{deviceNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="carrierNumber != null">
+			and carrier_number = #{carrierNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="billNumber != null">
+			and bill_number = #{billNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="origin != null">
+			and origin = #{origin,jdbcType=VARCHAR}
+		</if>
+		<if test="destination != null">
+			and destination = #{destination,jdbcType=VARCHAR}
+		</if>
+		<if test="locationFreqType != null">
+			and location_freq_type =
+			#{locationFreqType,jdbcType=INTEGER}
+		</if>
+		<if test="locationFreq != null">
+			and location_freq = #{locationFreq,jdbcType=INTEGER}
+		</if>
+		<if test="transMode != null">
+			and trans_mode = #{transMode,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null">
+			and start_time = #{startTime,jdbcType=BIGINT}
+		</if>
+		<if test="finishTime != null">
+			and finish_time = #{finishTime,jdbcType=BIGINT}
+		</if>
+		<if test="status != null">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="remark != null">
+			and remark = #{remark,jdbcType=VARCHAR}
+		</if>
+		<if test="creatorId != null">
+			and creator_id = #{creatorId,jdbcType=INTEGER}
+		</if>
+		<if test="createTime != null">
+			and create_time = #{createTime,jdbcType=BIGINT}
+		</if>
+		<if test="updatorId != null">
+			and updator_id = #{updatorId,jdbcType=INTEGER}
+		</if>
+		<if test="updateTime != null">
+			and update_time = #{updateTime,jdbcType=BIGINT}
+		</if>
+		<if test="containerId != null">
+			and container_id = #{containerId,jdbcType=VARCHAR}
+		</if>
+		order by finish_time desc
+	</select>
+	
+	<select id="getCount"
+		parameterType="com.winterframework.logistics.common.entity.TransOrder"
+		resultType="java.lang.Integer">
+		SELECT COUNT(1)FROM lm_trans_order
+		where true
+		<if test="deviceNumber != null">
+			and device_number = #{deviceNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="carrierNumber != null">
+			and carrier_number = #{carrierNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="billNumber != null">
+			and bill_number = #{billNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="origin != null">
+			and origin = #{origin,jdbcType=VARCHAR}
+		</if>
+		<if test="destination != null">
+			and destination = #{destination,jdbcType=VARCHAR}
+		</if>
+		<if test="locationFreqType != null">
+			and location_freq_type =#{locationFreqType,jdbcType=INTEGER}
+		</if>
+		<if test="locationFreq != null">
+			and location_freq = #{locationFreq,jdbcType=INTEGER}
+		</if>
+		<if test="transMode != null">
+			and trans_mode = #{transMode,jdbcType=INTEGER}
+		</if>
+		<if test="transStatus != null">
+			and trans_status = #{transStatus,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null">
+			and start_time = #{startTime,jdbcType=BIGINT}
+		</if>
+		<if test="finishTime != null">
+			and finish_time = #{finishTime,jdbcType=BIGINT}
+		</if>
+		<if test="status != null">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="remark != null">
+			and remark = #{remark,jdbcType=VARCHAR}
+		</if>
+		<if test="creatorId != null">
+			and creator_id = #{creatorId,jdbcType=INTEGER}
+		</if>
+		<if test="createTime != null">
+			and create_time = #{createTime,jdbcType=BIGINT}
+		</if>
+		<if test="updatorId != null">
+			and updator_id = #{updatorId,jdbcType=INTEGER}
+		</if>
+		<if test="updateTime != null">
+			and update_time = #{updateTime,jdbcType=BIGINT}
+		</if>
+		<if test="containerId != null">
+			and container_id = #{containerId,jdbcType=VARCHAR}
+		</if>
+	</select>
+
+ 	<select id="searchIdByNumber" parameterType="String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_trans_order
+		<if test="_parameter != null">
+			where id = #{code}
+			OR container_id = #{code}
+			OR bill_number= #{code}
+			OR device_number = #{code}
+		</if>
+		order by create_time desc
+	</select> 
+	
+	<select id="searchIdCountByNumber" parameterType="String"
+		resultType="java.lang.Integer">
+		SELECT COUNT(1)
+		FROM lm_trans_order
+		<if test="_parameter != null">
+			where id = #{code}
+			OR container_id = #{code}
+			OR bill_number
+			= #{code}
+			OR device_number = #{code}
+		</if>
+		order by id desc
+	</select> 
+	
+	<select id="searchIdByAttribute"  parameterType="String" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" /> 
+		FROM lm_trans_order  
+		<if test="_parameter != null">
+		where device_number=#{code} or container_id=#{code} or bill_number=#{code} order by create_time desc limit 1
+		</if>
+	</select>
+
+	<select id="searchListByAttribute"
+		parameterType="com.winterframework.logistics.common.entity.SearchAttribute"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_trans_order
+		where true and creator_id=#{companyId}
+		<if test="transportType != null">
+			and trans_mode in
+			<foreach close=")" collection="transportType" index="index"
+				item="item" open="(" separator=",">
+				#{item}
+			</foreach>
+		</if>
+		<if test="startDate != null and endDate != null ">
+      <![CDATA[   
+      and create_time >= #{startDate,jdbcType=BIGINT}
+      and create_time <= #{endDate,jdbcType=BIGINT}
+       ]]>
+		</if>
+
+		<if test="startDate != null and endDate == null ">
+ 	  <![CDATA[ 
+       and create_time >= #{startDate,jdbcType=BIGINT}
+        ]]>
+		</if>
+		<if test="endDate != null and startDate == null">
+      <![CDATA[ 
+       and create_time <= #{endDate,jdbcType=BIGINT}
+        ]]>
+		</if>
+		<if test="transportStatus != null">
+			and trans_status = #{transportStatus,jdbcType=INTEGER}
+		</if>
+		<if test="startPosition != null">
+      <![CDATA[
+	   and origin like concat(concat('%',#{startPosition}),'%')
+		]]>
+		</if>
+		<if test="endPosition != null">
+        <![CDATA[  
+        and destination like concat(concat('%',#{endPosition}),'%')
+        ]]>
+		</if>
+	</select>
+	
+	<select id="searchListCount"
+		parameterType="com.winterframework.logistics.common.entity.SearchAttribute"
+		resultType="java.lang.Integer">
+		SELECT COUNT(1)FROM lm_trans_order
+		where true and  creator_id=#{companyId}
+		<if test="transportType != null">
+			and trans_mode in
+			<foreach close=")" collection="transportType" index="index"
+				item="item" open="(" separator=",">
+				#{item}
+			</foreach>
+		</if>
+		<if test="startDate != null and endDate != null ">
+      <![CDATA[   
+      and create_time >= #{startDate,jdbcType=BIGINT}
+      and create_time <= #{endDate,jdbcType=BIGINT}
+       ]]>
+		</if>
+
+		<if test="startDate != null and endDate == null ">
+ 	  <![CDATA[ 
+       and create_time >= #{startDate,jdbcType=BIGINT}
+        ]]>
+		</if>
+		<if test="endDate != null and startDate == null">
+      <![CDATA[ 
+       and create_time <= #{endDate,jdbcType=BIGINT}
+        ]]>
+		</if>
+		<if test="transportStatus != null">
+			and trans_status = #{transportStatus,jdbcType=INTEGER}
+		</if>
+		<if test="startPosition != null">
+      <![CDATA[
+	   and origin like concat(concat('%',#{startPosition}),'%')
+		]]>
+		</if>
+		<if test="endPosition != null">
+        <![CDATA[  
+        and destination like concat(concat('%',#{endPosition}),'%')
+        ]]>
+		</if>
+	</select>
+
+	<delete id="delete" parameterType="long">
+		delete from lm_trans_order
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert"
+		parameterType="com.winterframework.logistics.common.entity.TransOrder">
+		<selectKey keyProperty="id" order="AFTER" resultType="long">
+			select
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into lm_trans_order
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="deviceNumber != null">
+				device_number,
+			</if>
+			<if test="carrierNumber != null">
+				carrier_number,
+			</if>
+			<if test="billNumber != null">
+				bill_number,
+			</if>
+			<if test="origin != null">
+				origin,
+			</if>
+			<if test="destination != null">
+				destination,
+			</if>
+			<if test="locationFreqType != null">
+				location_freq_type,
+			</if>
+			<if test="locationFreq != null">
+				location_freq,
+			</if>
+			<if test="transMode != null">
+				trans_mode,
+			</if>
+			<if test="transStatus != null">
+				trans_status,
+			</if>
+			<if test="startTime != null">
+				start_time,
+			</if>
+			<if test="finishTime != null">
+				finish_time,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="creatorId != null">
+				creator_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updatorId != null">
+				updator_id,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="containerId != null">
+				container_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="deviceNumber != null">
+				#{deviceNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carrierNumber != null">
+				#{carrierNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="billNumber != null">
+				#{billNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="origin != null">
+				#{origin,jdbcType=VARCHAR},
+			</if>
+			<if test="destination != null">
+				#{destination,jdbcType=VARCHAR},
+			</if>
+			<if test="locationFreqType != null">
+				#{locationFreqType,jdbcType=INTEGER},
+			</if>
+			<if test="locationFreq != null">
+				#{locationFreq,jdbcType=INTEGER},
+			</if>
+			<if test="transMode !=null">
+				#{transMode,jdbcType=INTEGER},
+			</if>
+			<if test="transStatus != null">
+				#{transStatus,jdbcType=INTEGER},
+			</if>
+			<if test="startTime != null">
+				#{startTime,jdbcType=BIGINT},
+			</if>
+			<if test="finishTime != null">
+				#{finishTime,jdbcType=BIGINT},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="creatorId != null">
+				#{creatorId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=BIGINT},
+			</if>
+			<if test="updatorId != null">
+				#{updatorId,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=BIGINT},
+			</if>
+			<if test="containerId != null">
+				#{containerId,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update"
+		parameterType="com.winterframework.logistics.common.entity.TransOrder">
+		update lm_trans_order
+		<set>
+			<if test="deviceNumber != null">
+				device_number = #{deviceNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carrierNumber != null">
+				carrier_number = #{carrierNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="billNumber != null">
+				bill_number = #{billNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="origin != null">
+				origin = #{origin,jdbcType=VARCHAR},
+			</if>
+			<if test="destination != null">
+				destination = #{destination,jdbcType=VARCHAR},
+			</if>
+			<if test="locationFreqType != null">
+				location_freq_type =
+				#{locationFreqType,jdbcType=INTEGER},
+			</if>
+			<if test="locationFreq != null">
+				location_freq = #{locationFreq,jdbcType=INTEGER},
+			</if>
+			<if test="transMode != null">
+				trans_mode = #{transMode,jdbcType=INTEGER},
+			</if>
+			<if test="transStatus != null">
+				trans_status = #{transStatus,jdbcType=INTEGER},
+			</if>
+			<if test="startTime != null">
+				start_time = #{startTime,jdbcType=BIGINT},
+			</if>
+			<if test="finishTime != null">
+				finish_time = #{finishTime,jdbcType=BIGINT},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="creatorId != null">
+				creator_id = #{creatorId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=BIGINT},
+			</if>
+			<if test="updatorId != null">
+				updator_id = #{updatorId,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=BIGINT},
+			</if>
+			<if test="containerId != null">
+				container_id = #{containerId,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>

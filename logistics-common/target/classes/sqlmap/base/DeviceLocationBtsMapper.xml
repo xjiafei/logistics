@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="com.winterframework.logistics.common.entity.DeviceLocationBts">
+	<resultMap id="BaseResultMap" type="com.winterframework.logistics.common.entity.DeviceLocationBts">
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+	        	id as id,
+	        	imei as imei,
+	        	mcc as mcc,
+	        	mnc as mnc,
+	        	lac1 as lac1,
+	        	ci1 as ci1,
+	        	rssi1 as rssi1,
+	        	lac2 as lac2,
+	        	ci2 as ci2,
+	        	rssi2 as rssi2,
+	        	lac3 as lac3,
+	        	ci3 as ci3,
+	        	rssi3 as rssi3,
+	        	lac4 as lac4,
+	        	ci4 as ci4,
+	        	rssi4 as rssi4,
+	        	lac5 as lac5,
+	        	ci5 as ci5,
+	        	rssi5 as rssi5,
+	        	time as time,
+	        	status as status,
+	        	remark as remark,
+	        	handle_flag as handleFlag,
+	        	creator_id as creatorId,
+	        	create_time as createTime,
+	        	updator_id as updatorId,
+	        	update_time as updateTime
+	</sql>
+		<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+		<insert id="insert" parameterType="com.winterframework.logistics.common.entity.DeviceLocationBts" 
+			useGeneratedKeys="true" keyProperty="id" 
+		 flushCache="true">
+	        INSERT INTO
+	        lm_device_location_bts (
+	        	imei ,
+	        	mcc ,
+	        	mnc ,
+	        	lac1,
+	        	ci1,
+	        	rssi1,
+	        	lac2,
+	        	ci2,
+	        	rssi2,
+	        	lac3,
+	        	ci3,
+	        	rssi3,
+	        	lac4,
+	        	ci4,
+	        	rssi4,
+	        	lac5,
+	        	ci5,
+	        	rssi5,
+	        	time ,
+	        	status,
+	        	remark ,
+	        	creator_id ,
+	        	create_time
+	        ) VALUES (
+	        	#{imei,javaType=string,jdbcType=VARCHAR} ,
+	        	#{mcc,javaType=string,jdbcType=VARCHAR} ,
+	        	#{mnc,javaType=string,jdbcType=VARCHAR} ,
+	        	#{lac1,javaType=string,jdbcType=VARCHAR} ,
+	        	#{ci1,javaType=string,jdbcType=VARCHAR} ,
+	        	#{rssi1,javaType=string,jdbcType=VARCHAR} ,
+	        	#{lac2,javaType=string,jdbcType=VARCHAR} ,
+	        	#{ci2,javaType=string,jdbcType=VARCHAR} ,
+	        	#{rssi2,javaType=string,jdbcType=VARCHAR} ,
+	        	#{lac3,javaType=string,jdbcType=VARCHAR} ,
+	        	#{ci3,javaType=string,jdbcType=VARCHAR} ,
+	        	#{rssi3,javaType=string,jdbcType=VARCHAR} ,
+	        	#{lac4,javaType=string,jdbcType=VARCHAR} ,
+	        	#{ci4,javaType=string,jdbcType=VARCHAR} ,
+	        	#{rssi4,javaType=string,jdbcType=VARCHAR} ,
+	        	#{lac5,javaType=string,jdbcType=VARCHAR} ,
+	        	#{ci5,javaType=string,jdbcType=VARCHAR} ,
+	        	#{rssi5,javaType=string,jdbcType=VARCHAR} ,
+	        	#{time,javaType=long,jdbcType=DECIMAL} ,
+	        	#{status,javaType=integer,jdbcType=INTEGER} ,
+	        	#{remark,javaType=string,jdbcType=VARCHAR} ,
+	        	#{creatorId,javaType=long,jdbcType=DECIMAL} ,
+	        	#{createTime,javaType=long,jdbcType=DECIMAL} 
+	        )
+		</insert>
+	    
+		<update id="update" parameterType="com.winterframework.logistics.common.entity.DeviceLocationBts">
+	    <![CDATA[
+	        UPDATE lm_device_location_bts SET
+		        imei = #{imei,javaType=string,jdbcType=VARCHAR} ,
+		        mcc=#{mcc,javaType=string,jdbcType=VARCHAR} ,
+	        	mnc=#{mnc,javaType=string,jdbcType=VARCHAR} ,
+	        	lac1=#{lac1,javaType=string,jdbcType=VARCHAR} ,
+	        	ci1=#{ci1,javaType=string,jdbcType=VARCHAR} ,
+	        	rssi1=#{rssi1,javaType=string,jdbcType=VARCHAR} ,
+	        	lac2=#{lac2,javaType=string,jdbcType=VARCHAR} ,
+	        	ci2=#{ci2,javaType=string,jdbcType=VARCHAR} ,
+	        	rssi2=#{rssi2,javaType=string,jdbcType=VARCHAR} ,
+	        	lac3=#{lac3,javaType=string,jdbcType=VARCHAR} ,
+	        	ci3=#{ci3,javaType=string,jdbcType=VARCHAR} ,
+	        	rssi3=#{rssi3,javaType=string,jdbcType=VARCHAR} ,
+	        	lac4=#{lac4,javaType=string,jdbcType=VARCHAR} ,
+	        	ci4=#{ci4,javaType=string,jdbcType=VARCHAR} ,
+	        	rssi4=#{rssi4,javaType=string,jdbcType=VARCHAR} ,
+	        	lac5=#{lac5,javaType=string,jdbcType=VARCHAR} ,
+	        	ci5=#{ci5,javaType=string,jdbcType=VARCHAR} ,
+	        	rssi5=#{rssi5,javaType=string,jdbcType=VARCHAR} ,
+		        time = #{time,javaType=long,jdbcType=DECIMAL} ,
+		        status = #{status,javaType=integer,jdbcType=INTEGER} ,
+		        remark = #{remark,javaType=string,jdbcType=VARCHAR} ,
+		        handle_flag = #{handleFlag,javaType=integer,jdbcType=INTEGER},
+		        updator_id = #{updatorId,javaType=long,jdbcType=DECIMAL} ,
+		        update_time = #{updateTime,javaType=long,jdbcType=DECIMAL}
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+		</update>
+	   <delete id="delete" parameterType="java.lang.Long">
+	        delete from lm_device_location_bts where id = #{id} 
+	    </delete>   
+	    <select id="getById" parameterType="long" resultMap="BaseResultMap" flushCache="false">
+			select <include refid="Base_Column_List" />
+		    <![CDATA[
+			    from lm_device_location_bts 
+		        where 
+		        id = #{id} 
+		    ]]>
+		</select>	
+		<select id="getByIds" parameterType="list"  resultMap="BaseResultMap" flushCache="false">
+			select <include refid="Base_Column_List" />
+			    from lm_device_location_bts 
+		        where id in
+				<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+#{item}				</foreach>					
+		</select>	
+</mapper>

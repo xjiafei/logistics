@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-2.0.xsd " 
+	default-autowire="byName" default-lazy-init="false">
+	
+	<!--根据command类型取得相应的处理类 -->
+	<bean id="handlerFunctionMap" class="java.util.HashMap" lazy-init="true">  
+    	<constructor-arg>  
+        	<map> 
+        		<!-- 设备心跳连网-->
+	        	<entry key="AH" value-ref="deviceHeartBeatHandler"/>
+	        	<!-- 设备登录信息-->
+	        	<entry key="AB" value-ref="deviceLoginHandler"/>
+	        	<!-- 设备定位数据(单条记录）上传-->
+	        	<entry key="BA" value-ref="deviceLocationHandler"/>
+	        	<!-- 设备定位数据(多条记录）上传-->
+	        	<entry key="BB" value-ref="deviceLocationMultiHandler"/>
+	        	<!-- 设备固定上传时间设置响应-->
+	        	<entry key="GB" value-ref="deviceFixUploadSettResHandler"/>
+	        	<!-- 设备回传时间间隔设置响应-->
+	        	<entry key="BI" value-ref="deviceLocationFreqSettResHandler"/>
+			</map>  
+    	</constructor-arg>  
+	</bean>
+</beans>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"
+  "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+<configuration>
+	<typeHandlers>
+		<typeHandler javaType="boolean" jdbcType="VARCHAR"
+			handler="com.winterframework.orm.dal.ibatis3.type.YesNoTypeHandler" />
+		<typeHandler handler="org.apache.ibatis.type.DateTypeHandler"
+			javaType="java.util.Date" jdbcType="TIMESTAMP" />
+	</typeHandlers>
+
+
+	<plugins>
+
+		<plugin interceptor="com.winterframework.orm.page.plugin.OffsetLimitInterceptor">
+			<property name="dialectClass"
+				value="com.winterframework.orm.dialect.MySQLDialect" />
+		</plugin>
+	</plugins>
+	<mappers>
+		<mapper resource="sqlmap/base/DeviceMapper.xml" />
+		<mapper resource="sqlmap/base/TransOrderMapper.xml" />
+		<mapper resource="sqlmap/base/DvcTransOrderMapper.xml" />
+		<mapper resource="sqlmap/base/DeviceBatteryMapper.xml" />
+		<mapper resource="sqlmap/base/DeviceBatteryMapper.xml" />
+		<mapper resource="sqlmap/base/DeviceLocationMapper.xml" />
+		<mapper resource="sqlmap/base/DeviceLocationGpsMapper.xml" />
+		<mapper resource="sqlmap/base/DeviceLocationBtsMapper.xml" />
+		<mapper resource="sqlmap/base/DeviceLocationSemiMapper.xml" />
+		<mapper resource="sqlmap/base/DvcDeviceLocationGpsMapper.xml" />
+		<mapper resource="sqlmap/base/DvcDeviceLocationBtsMapper.xml" />
+		<mapper resource="sqlmap/base/DvcDeviceLocationSemiMapper.xml" />
+		<mapper resource="sqlmap/base/DeviceCmdMapper.xml" />
+	</mappers>
+
+</configuration>

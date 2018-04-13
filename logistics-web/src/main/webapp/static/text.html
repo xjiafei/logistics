@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="./css/bootstrap-datepicker.min.css" type="" href="">
+    <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="./js/bootstrap-datepicker.min.js"></script>
+    <script src="./js/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+    <div class="d"></div>
+</head>
+
+<body>
+    <div id="app">
+        <form @submit.prevent="submit">
+            <div class="field">
+                姓名：<input type="text" v-model="user.name">
+            </div>
+
+            <div class="field">
+                性別：
+                <label>
+                <input type="radio" value="男" v-model="user.gender"> 男
+            </label>
+                <label>
+                <input type="radio" value="女" v-model="user.gender"> 女
+            </label>
+            </div>
+
+            <input type="submit" value="提交">
+        </form>
+    </div>
+</body>
+
+</html>
+<script>
+    // $('.text').datepicker({
+    //     language: 'zh-CN', //配置中文
+    //     format: 'yyyy-mm-dd', //配置格式 yy&&mm&&dd也可以,YY MM DD以文字格式表示
+    //     startDate: '1950-01-01', //  设置起始限制时间的时间
+    //     endDate: '1995-01-01' //设置结束限制时间
+    // });
+    // $('.text').css({
+    //     width: '100px',
+    //     height: '200px',
+    //     background: 'yellow'
+    // })
+    // console.log($('.text'))
+
+    new Vue({
+
+        el: '#app',
+        data: {
+            user: {
+                name: '',
+                gender: ''
+            }
+        },
+        methods: {
+            submit: function() {
+                var formData = JSON.stringify(this.user); // 这里才是你的表单数据
+
+                console.log(formData)
+            }
+        }
+
+    })
+</script>

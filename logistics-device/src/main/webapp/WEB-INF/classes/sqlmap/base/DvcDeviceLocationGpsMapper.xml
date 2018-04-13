@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winterframework.logistics.common.entity.DeviceLocationGps">
+  <select id="getListByHandleflagAndTimes" parameterType="hashmap" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lm_device_location_gps
+    where status=1
+    	and handle_flag = #{handleFlag,jdbcType=INTEGER}
+    	and time between #{fromTime,jdbcType=BIGINT} and #{toTime,jdbcType=BIGINT}
+    order by time asc
+  </select>
+  <select id="getListByImeiAndTimes" parameterType="hashmap" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lm_device_location_gps
+    where status=1
+    	and time between #{fromTime,jdbcType=BIGINT} and #{toTime,jdbcType=BIGINT}
+    	and imei=#{imei,jdbcType=VARCHAR}
+    order by time asc
+  </select>
+</mapper>

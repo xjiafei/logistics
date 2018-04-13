@@ -1,0 +1,1313 @@
+.bot2 {
+    padding: 5px 10px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 10px;
+    height: 25px;
+    color: #6886d4;
+    border: 1px solid #6886d4;
+    line-height: 15px;
+    margin-right: 10px;
+}
+
+.bot {
+    padding: 5px 20px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #6886d4;
+    border-radius: 4px;
+    height: 30px;
+    color: #FFFFFF
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+.botRed {
+    width: 80px;
+    text-align: center;
+    height: 40px;
+    background: #f84d36;
+    color: #fff;
+    line-height: 40px;
+    font-size: 14px;
+}
+
+.bold16 {
+    margin-bottom: 0px;
+    font-size: 14px;
+}
+
+.flexWrap {
+    flex-Wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap
+}
+
+.P-top {
+    height: 50px;
+    padding: 8px 0px;
+    background: white;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+
+.P-top span {
+    display: inline-block;
+    padding: 8px;
+}
+
+.P-top .leftBorder {
+    display: block;
+    width: 1px;
+    height: 14px;
+    background: #6886d4;
+    position: absolute;
+    left: 1px;
+    top: 17px;
+}
+
+.P-top .backBtn {
+    margin-left: 20px;
+}
+
+.maing20 {
+    min-width: 850px;
+    margin-top: 50px;
+    margin-left: 200px;
+    margin-right: 15px;
+}
+
+.le {
+    float: left
+}
+
+.ri {
+    float: right
+}
+
+
+/*header*/
+
+.headerBox {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    min-width: 1200px;
+    z-index: 1000
+}
+
+header {
+    background-color: #23262E;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    min-width: 1200px;
+}
+
+header .imgBox {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+header .imgBox img {
+    max-width: 100%;
+    min-width: 50px;
+    min-height: 50px;
+    position: relative;
+}
+
+header .iconBox {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    min-width: 40px;
+}
+
+header .iconBox img {
+    width: 40px;
+    position: relative;
+    right: 10px;
+    top: 0px;
+}
+
+.fix {
+    display: flex;
+}
+
+header .suer {
+    background: none;
+    cursor: pointer;
+    border: none;
+    color: #fff
+}
+
+header .suer:hover {
+    background: none;
+    border: none;
+    color: #fff
+}
+
+header .suer:active {
+    background: none;
+    border: none;
+    color: #fff
+}
+
+header .suer:link {
+    background: none;
+    border: none;
+    color: #fff
+}
+
+.loge {
+    height: 50px;
+}
+
+img.navbar-brand {
+    padding: 10px 40px;
+}
+
+header .navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
+    background-color: #fff
+}
+
+header .navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+    background-color: #fff
+}
+
+header .relative {
+    position: relative
+}
+
+header .navbar-default {
+    background: none;
+}
+
+header .nav {
+    background: none
+}
+
+header {
+    color: #fff;
+}
+
+header .navbar-default .navbar-brand {
+    color: #fff
+}
+
+header .navbar-default .navbar-nav>li>a {
+    color: #fff
+}
+
+header .navbar-default .navbar-nav>li>a:hover {
+    color: #6886d4;
+    background-color: #fff
+}
+
+header .absolute {
+    position: absolute;
+    left: 0px;
+    top: 30px;
+}
+
+.absolute {
+    position: absolute;
+}
+
+header i {
+    width: 15px;
+    height: 15px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    line-height: 15px;
+}
+
+header .goHelp {
+    color: #23262E;
+    cursor: pointer;
+    display: block;
+    min-width: 60px;
+    margin-right: 20px;
+}
+
+body {
+    background-color: #fff;
+    font-size: 14px;
+}
+
+html {
+    font-size: 14px;
+}
+
+header .myMenu {}
+
+.boder4 {
+    border-radius: 6px;
+}
+
+.lfet20 {
+    margin-left: 20px;
+}
+
+.BoxCenter {
+    width: 35%;
+    min-width: 37px;
+}
+
+
+/* muent*/
+
+ul li {
+    list-style: none !important;
+}
+
+.muent {
+    list-style: none;
+    background-color: #2B2E36;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    width: 210px;
+    position: fixed;
+    left: 0px;
+    top: 50px;
+    z-index: 11111111;
+}
+
+.muent li {
+    list-style: none;
+    cursor: pointer;
+    padding: 10px;
+    color: #c3c3c3;
+    text-decoration: none;
+    position: relative;
+    display: flex;
+    height: 40px;
+    padding: 0px;
+    line-height: 40px;
+}
+
+.muent li i {
+    line-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navbar-inverse {
+    border-radius: 0px;
+    border: 0px none;
+}
+
+.muent li:hover {
+    background-color: #101010;
+    color: #f0f0f0;
+}
+
+.muent li img {
+    width: 20px;
+    height: 20px;
+    margin-right: 40px;
+    margin-left: 10px;
+    position: relative;
+    top: 14px;
+    left: 15px;
+}
+
+.muent li span {
+    line-height: 17px;
+}
+
+.muent li .navP {
+    line-height: 40px;
+}
+
+.goExpert {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e1e1e1;
+    margin: auto
+}
+
+.listBoxs .goExpert p {
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer
+}
+
+.expert .muent .Expert {
+    background-color: #101010
+}
+
+.accout .muent .Account {
+    background-color: #101010
+}
+
+.accOrdersIng .muent .AssistOrderIng {
+    background-color: #101010
+}
+
+.employess .muent .Employees {
+    background-color: #101010
+}
+
+.patients .muent .Patients {
+    background-color: #101010
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    background-color: #fff;
+    color: #6886d4
+}
+
+.assOrders .muent .AssistOrders {
+    background-color: #101010
+}
+
+
+/* progress*/
+
+.progress {
+    width: 100%;
+    height: 5px;
+    min-width: 320px;
+}
+
+.relative {
+    position: relative;
+    top: 25px;
+    width: 50%;
+    height: 10px;
+}
+
+.p-centPublic {
+    margin-top: 30px
+}
+
+.progress .rud {
+    font-size: 12px;
+    text-align: center;
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    top: -8px;
+    border-radius: 15px;
+    background: #f0f0f0;
+    color: #6886d4;
+}
+
+.rud p {
+    position: absolute;
+    top: -25px;
+    left: -35px;
+    text-align: center;
+    font-size: 14px;
+    color: #6886d4;
+    width: 100px;
+}
+
+.progress .cheack {
+    background: #6886d4;
+    color: #fff
+}
+
+.progress-bar {
+    background-color: #6886d4
+}
+
+.progress span {
+    line-height: 24px;
+    text-align: center;
+    display: block;
+    width: 22px;
+    padding: 0px;
+}
+
+.rud1 {
+    left: 12.5%
+}
+
+.rud2 {
+    left: 33.5%
+}
+
+.rud3 {
+    left: 59.5%
+}
+
+.rud4 {
+    left: 84.5%;
+}
+
+.pro {
+    width: 170px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #ffae5a;
+    background: url("../ico3.png") no-repeat right;
+    background-color: #fff8ef
+}
+
+.pro[styles="3"] {
+    width: 170px;
+    background: none;
+    background-color: #fff8ef
+}
+
+.step {
+    padding: 0px 0px;
+    background-color: #fff;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.pros {
+    display: flex;
+    height: 56px;
+    line-height: 60px;
+    text-align: center;
+    min-width: 680px;
+    margin-left: 10px;
+    ;
+}
+
+.pro[status="1"] {
+    background-color: #ff9a1f;
+    color: #fff
+}
+
+.goxu {
+    display: block;
+    width: 80px;
+    line-height: 70px;
+    height: 30px;
+    text-decoration: none;
+    text-align: right;
+    background-image: url("")
+}
+
+
+/* nav*/
+
+.na {
+    min-width: 100px;
+    cursor: pointer;
+    font-size: 18px;
+    text-spacing: 5px;
+    text-align: center;
+    width: 20%;
+    max-width: 220px;
+    min-width: 100px;
+}
+
+.na p {
+    height: 60px;
+    min-width: 100px;
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
+}
+
+.navTitle {
+    margin-right: 50px;
+}
+
+.na p:hover {
+    border-bottom: 2px solid #6886d4;
+    color: #6886d4
+}
+
+.nav {
+    padding: 0px 0px;
+    background-color: #fff;
+    margin-top: 0px;
+}
+
+.navs {
+    display: flex;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    min-width: 680px
+}
+
+.na[status="1"] p {
+    border-bottom: 2px solid #6886d4;
+    color: #6886d4
+}
+
+.goxu {
+    display: block;
+    width: 80px;
+    line-height: 70px;
+    height: 30px;
+    text-decoration: none;
+    text-align: right;
+    background-image: url("");
+    font-size: 14px
+}
+
+.nav-tabs>li.active>a {
+    background-color: #fff;
+    font-size: 14px;
+    color: #6886d4
+}
+
+
+/*.nav-tabs>li>a{background-color: #fff;font-size:14px;color:#000;padding-left: 40px;padding-right: 40px;border-bottom: none;padding-bottom:10px;}*/
+
+
+/*.nav-tabs>li>a{border-radius:0px;margin-right: 0px;}*/
+
+
+/*.nav-tabs .active{border-top: 2px solid rgb(51, 122, 183); background: none; }*/
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    border-top: 1px solid #6886d4;
+    border-radius: 0px;
+    color: #000
+}
+
+
+/*listBox */
+
+.listBox .center {
+    padding-top: 20px;
+}
+
+.listBoxs {
+    width: 100%;
+}
+
+.listBox {
+    border: 1px solid #e1e1e1;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 6px;
+    margin: auto;
+    margin-bottom: 20px;
+    min-width: 330px;
+}
+
+.listBox .boxTitle {
+    width: 95%;
+    text-align: left
+}
+
+.listBox p {
+    text-align: left;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.listBox .botBox {
+    text-align: center;
+    display: inline-flex
+}
+
+.listBox .shool {
+    font-size: 12px;
+    text-align: left;
+    padding-top: 5px;
+    line-height: 25px;
+    color: #c9c9c9
+}
+
+.listBox label {
+    color: #c9c9c9
+}
+
+
+/* expert */
+
+.exper {}
+
+.exper .center {
+    min-width: 933px;
+}
+
+.titleBox {
+    width: 100%;
+    text-align: left;
+    margin-right: 8%;
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 20px;
+}
+
+.titleBox p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    border-left: 2px solid #6886d4;
+    padding-left: 10px;
+}
+
+.exper .listBox .vandMag {
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+.paddingA {
+    padding: 20px
+}
+
+.listTitle {
+    text-align: center;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    height: 50px;
+}
+
+.exper .listBox .vandMag p {
+    text-indent: 25px;
+    font-size: 12px;
+    text-align: left;
+    color: #000;
+    margin: 0px;
+    padding: 0px;
+    text-spacing: 5px;
+    margin-left: 10px;
+}
+
+.exper .listBox .vandMag p span {
+    color: red;
+    font-size: 14px;
+    margin-left: 5px
+}
+
+.botByYue {
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #6886d4;
+    color: #fff;
+    line-height: 50px;
+    height: 60px;
+    border-radius: 0px 0px 8px 0px;
+}
+
+.exper .listBox .vandMag .vdio {
+    background-size: 20px;
+    background-position: 0px 3px;
+}
+
+.exper .listBox .vandMag .adio {
+    background-size: 20px;
+    background-position: 0px 3px;
+}
+
+.exper .listBox .conp {
+    font-size: 14px;
+    text-align: left;
+    line-height: 30px;
+    padding: 0;
+    max-width: 100%;
+    overflow: hidden;
+    color: #c9c9c9;
+}
+
+.exper .listBox .botBox .bot {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #9cb0e3;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #9cb0e3;
+    line-height: 14px;
+}
+
+.listBox:hover {}
+
+.exper .listBox .imgBox {
+    cursor: pointer;
+    border-radius: 80px;
+    width: 80px;
+    height: 80px;
+    overflow: hidden
+}
+
+
+/* accOrdersIng */
+
+.accOrdersIngRight {
+    margin-left: 20px;
+}
+
+.accOrdersIng .step .titleBox {
+    display: none
+}
+
+.accOrdersIng .step {
+    margin-top: 0px;
+}
+
+.step {
+    margin-top: 0px;
+}
+
+
+/*foldBox*/
+
+.borderB {
+    border-bottom: 1px solid #E1E1E1;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.foldBox {
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 6px;
+    min-width: 350px;
+    max-width: 350px;
+    width: 20%
+}
+
+.borderC {
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#fefefe), to(#fdfdfd));
+}
+
+.foldBox .foldTop {
+    text-decoration: none;
+    background: #6886d4
+}
+
+.foldBox .foldTop .bot {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+
+.foldBox .foldTop a {
+    color: #fff;
+}
+
+.foldBox .foldTop a:hover,
+.foldBox .foldTop a:focus {
+    color: #fff;
+    text-decoration: none
+}
+
+.foldBox .foldCent {
+    border: 1px solid #6886d4
+}
+
+.foldBox .foldCent li {
+    width: 100%;
+    margin-top: 10px;
+    background: #f5f8fe;
+    position: relative;
+    ;
+    padding: 3px;
+}
+
+.foldBox .foldCent li .listCentBox {
+    margin-top: 10px;
+}
+
+.foldBox .foldCent li:hover {
+    background-color: #d3e4ff
+}
+
+.foldBox .foldCent li:hover .stats {
+    background-color: #d3e4ff
+}
+
+.foldBox .foldCent li:hover .statsBorder {
+    background-color: #6886d4;
+    width: 3px;
+    height: 76px;
+    left: 0px;
+    top: 0px;
+    position: absolute
+}
+
+.foldBox .foldCent li .listCentBox .text p {
+    height: 30px;
+    line-height: 30px;
+    padding: 0px;
+    margin: 0
+}
+
+.foldBox .foldCent .stats {
+    display: block;
+    width: 76px;
+    height: 76px;
+    background: #e6eeff;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.foldBox .foldCent .stats p {
+    height: 76px;
+    line-height: 76px;
+    text-align: center
+}
+
+.foldBox .foldCent li[status="1"] {
+    background-color: #d3e4ff
+}
+
+.foldBox .foldCent li[status="1"] .stats {
+    background-color: #d3e4ff
+}
+
+.foldBox .foldCent li[status="1"] .statsBorder {
+    background-color: #6886d4;
+    width: 3px;
+    height: 76px;
+    left: 0px;
+    top: 0px;
+    position: absolute
+}
+
+
+/* toking*/
+
+.toking p {
+    color: #5a5a5a
+}
+
+.toking .footer {
+    position: relative;
+}
+
+.toking {
+    padding: 20px 0px;
+    background-color: #fff;
+    margin-top: 20px;
+}
+
+.toking .textConp {
+    margin-top: 15px;
+}
+
+.toking .top {
+    margin-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative
+}
+
+.toking .botRed {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.tokingMageBox {
+    min-width: 340px;
+}
+
+.toking .broderLeft {
+    border-left: 1px solid #f2f2f2;
+}
+
+.toking .textConp p {
+    font-size: 14px;
+}
+
+.toking .textConp .bot2 {
+    font-size: 12px;
+}
+
+.toking .userMageBox {
+    width: 80px;
+    height: 80px;
+    background-color: #e0e0e0;
+    border-radius: 40px;
+    margin-right: 20px;
+    overflow: hidden
+}
+
+.toking .userMageBox img {
+    width: 100%;
+}
+
+.toking .broderLeft p {
+    font-size: 14px;
+    margin-bottom: 0px;
+    padding-left: 20px;
+}
+
+.toking .broderLeft p label {
+    color: #5a5a5a
+}
+
+.toking .center {
+    border-top: 1px solid #f2f2f2;
+}
+
+.toking .center ul {
+    height: 475px;
+}
+
+.toking .center ul li {
+    margin-top: 10px;
+    padding-left: 30px;
+    width: 100%
+}
+
+.toking .center ul li .imgBox {
+    width: 70px;
+    height: 70px;
+    background-color: #e0e0e0;
+    border-radius: 40px;
+    margin-right: 10px
+}
+
+.toking .center ul li .tokingText {
+    padding: 15px;
+    margin: 10px;
+    display: inline-flex;
+    background: #d3e4ff;
+    border-radius: 12px;
+}
+
+.toking .center ul li .tokingText p {
+    margin: 0px;
+}
+
+.tokTime {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}
+
+.fileByImg {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    opacity: 0;
+}
+
+.center ul li.listRight .fix {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.center ul li.listRight .imgBox {
+    margin-left: 10px;
+    margin-right: 30px;
+}
+
+.center ul li.listRight .tokingText p {
+    text-align: left;
+}
+
+.center .footer {
+    background-color: #f5f8fe;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-image: url("");
+}
+
+.iconTokingByImg {
+    width: 30px;
+    height: 25px;
+    background: url("../img/tupian.png") no-repeat center;
+    margin-top: 17px;
+    margin-left: 20px;
+}
+
+.toking .sendText {
+    height: 130px;
+    width: 100%;
+}
+
+.toking .sendText textarea {
+    padding: 10px;
+    font-size: 14px;
+    color: #000000;
+    width: 100%;
+    height: 100px;
+    overflow: visible;
+    border: 0px none
+}
+
+.toking .sendText .bot {
+    height: 40px;
+    line-height: 30px;
+    width: 80px;
+}
+
+.toking .sendText .fix {
+    flex-direction: row-reverse;
+}
+
+.toking .center ul {
+    overflow-wrap: normal;
+    display: flex;
+    flex-wrap: wrap;
+    /*align-items: flex-end;*/
+    z-index: 1000;
+    margin-bottom: 20px;
+}
+
+.das {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+
+/* patients*/
+
+.patients .none {
+    display: none
+}
+
+
+/* assOrders*/
+
+.assOrders .nav {}
+
+.assOrders .patientsRightTop {
+    background: #fff;
+    padding-bottom: 0px;
+    border-radius: 8px 8px 8px 8px;
+    min-width: 950px;
+}
+
+.assOrders .input {
+    width: 200px;
+}
+
+
+/*.assOrders button {*/
+
+
+/*max-width: 120px;*/
+
+
+/*text-align: right;*/
+
+
+/*min-width: 80px;*/
+
+
+/*width: 130%*/
+
+
+/*}*/
+
+.assOrders .caret {
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.assOrders .caret {
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.topSerch {
+    padding: 10px;
+    padding-top: 30px;
+    background-color: #fff
+}
+
+.topSerch span {
+    line-height: 40px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.topSerch label {
+    margin: 0 5px;
+    line-height: 36px;
+    height: 30px;
+    display: block
+}
+
+.topSerch .sech {
+    width: 60px;
+    text-align: center
+}
+
+
+/*sechList*/
+
+.sechList {
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    min-width: 960px;
+}
+
+.sechList .top {
+    background: #f5f8fe;
+    line-height: 40px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 50px;
+}
+
+.sechList .top p {
+    margin-bottom: 0px;
+}
+
+.sechList .vdio {
+    flex-direction: row-reverse
+}
+
+.sechList .imgBox {
+    width: 80px;
+    height: 80px;
+    background: #e0e0e0;
+    overflow: hidden;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 40px;
+}
+
+.sechList .imgBox img {
+    max-width: 100%;
+}
+
+.sechList .center p {
+    line-height: 30px;
+    height: 30px;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 8px;
+    color: #bcbcbc
+}
+
+.sechList .center {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.sechList .center .text {
+    line-height: 60px;
+    height: 60px;
+    color: #bcbcbc
+}
+
+.sechList .status[status="1"] {
+    color: #6886d4
+}
+
+.sechList .status[status="2"] {
+    color: #ff9a1f
+}
+
+.sechList .status[status="3"] {
+    color: #8be6f7
+}
+
+.card {}
+
+.botbyRight {
+    flex-direction: row-reverse;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.top .sechSpanRight .botbyRight {
+    margin-top: 0px;
+}
+
+.top .sechSpanRight .botbyRight p {
+    line-height: 40px;
+}
+
+.sechSpanLeft {
+    width: 60%;
+    min-width: 700px;
+}
+
+.sechSpanRight {
+    width: 40%;
+    min-width: 200px;
+}
+
+.navLeft {
+    min-width: 732px;
+}
+
+.span6 {
+    width: 60%
+}
+
+.span3 {
+    width: 30%
+}
+
+.span4 {
+    width: 40%
+}
+
+.span2 {
+    width: 20%
+}
+
+.span5 {
+    width: 50%
+}
+
+.span8 {
+    width: 80%
+}
+
+.span7 {
+    width: 70%
+}
+
+.span01 {
+    width: 10%
+}
+
+.span95 {
+    width: 100%
+}
+
+.span02 {
+    width: 20%
+}
+
+.fixR {
+    flex-direction: row-reverse;
+    -webkit-flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+}
+
+.oderUmber {
+    min-width: 180px;
+}
+
+#app {
+    margin-top: 0px;
+}

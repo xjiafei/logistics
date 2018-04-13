@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winterframework.logistics.common.entity.User">
+	<resultMap id="BaseResultMap"
+		type="com.winterframework.logistics.common.entity.User">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="user_name" jdbcType="VARCHAR" property="userName" />
+		<result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+		<result column="passwd" jdbcType="VARCHAR" property="passwd" />
+		<result column="head_img" jdbcType="VARCHAR" property="headImg" />
+		<result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+		<result column="type" jdbcType="INTEGER" property="type" />
+		<result column="company_id" jdbcType="INTEGER" property="companyId" />
+		<result column="online" jdbcType="INTEGER" property="online" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="remark" jdbcType="VARCHAR" property="remark" />
+		<result column="creator_id" jdbcType="INTEGER" property="creatorId" />
+		<result column="create_time" jdbcType="BIGINT" property="createTime" />
+		<result column="updator_id" jdbcType="INTEGER" property="updatorId" />
+		<result column="update_time" jdbcType="BIGINT" property="updateTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, user_name, nick_name, passwd, head_img, phone_number,
+		type,company_id,online, status, remark, creator_id,
+		create_time,
+		updator_id, update_time
+	</sql>
+ 	<select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from lm_user
+	    where id = #{id,jdbcType=INTEGER}
+    </select>
+	<select id="getByAttribute" parameterType="com.winterframework.logistics.common.entity.User"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_user where true and type=1
+		<if test="id !=null">
+			and id= #{id,jdbcType=INTEGER}
+		</if>
+		<if test="userName != null">
+			and user_name = #{userName,jdbcType=VARCHAR}
+		</if>
+		<if test="nickName != null">
+			and nick_name = #{nickName,jdbcType=VARCHAR}
+		</if>
+		<if test="passwd != null">
+			and passwd = #{passwd,jdbcType=VARCHAR}
+		</if>
+		<if test="headImg != null">
+			and head_img = #{headImg,jdbcType=VARCHAR}
+		</if>
+		<if test="phoneNumber != null">
+			and phone_number = #{phoneNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="companyId != null">
+			and company_id = #{companyId,jdbcType=INTEGER}
+		</if>
+		<if test="status != null">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="remark != null">
+			and remark = #{remark,jdbcType=VARCHAR}
+		</if>
+		<if test="creatorId != null">
+			and creator_id = #{creatorId,jdbcType=INTEGER}
+		</if>
+		<if test="createTime != null">
+			and create_time = #{createTime,jdbcType=BIGINT}
+		</if>
+		<if test="updatorId != null">
+			and updator_id = #{updatorId,jdbcType=INTEGER}
+		</if>
+		<if test="updateTime != null">
+			and update_time = #{updateTime,jdbcType=BIGINT}
+		</if>
+	</select>
+
+	<select id="getCountByAttribute" parameterType="com.winterframework.logistics.common.entity.User"
+		resultType="java.lang.Integer">
+		select count(*)
+		from lm_user
+		where true and type=1
+		<if test="id !=null">
+			and id= #{id,jdbcType=INTEGER}
+		</if>
+		<if test="userName != null">
+			and user_name = #{userName,jdbcType=VARCHAR}
+		</if>
+		<if test="nickName != null">
+			and nick_name = #{nickName,jdbcType=VARCHAR}
+		</if>
+		<if test="passwd != null">
+			and passwd = #{passwd,jdbcType=VARCHAR}
+		</if>
+		<if test="headImg != null">
+			and head_img = #{headImg,jdbcType=VARCHAR}
+		</if>
+		<if test="phoneNumber != null">
+			and phone_number = #{phoneNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="companyId != null">
+			and company_id = #{companyId,jdbcType=INTEGER}
+		</if>
+		<if test="status != null">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="remark != null">
+			and remark = #{remark,jdbcType=VARCHAR}
+		</if>
+		<if test="creatorId != null">
+			and creator_id = #{creatorId,jdbcType=INTEGER}
+		</if>
+		<if test="createTime != null">
+			and create_time = #{createTime,jdbcType=BIGINT}
+		</if>
+		<if test="updatorId != null">
+			and updator_id = #{updatorId,jdbcType=INTEGER}
+		</if>
+		<if test="updateTime != null">
+			and update_time = #{updateTime,jdbcType=BIGINT}
+		</if>
+
+	</select>
+
+	<delete id="delete" parameterType="long">
+		delete from lm_user
+		where id =
+		#{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.winterframework.logistics.common.entity.User">
+		<selectKey keyProperty="id" order="AFTER" resultType="long">
+			select
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into lm_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="nickName != null">
+				nick_name,
+			</if>
+			<if test="passwd != null">
+				passwd,
+			</if>
+			<if test="headImg != null">
+				head_img,
+			</if>
+			<if test="phoneNumber != null">
+				phone_number,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+			<if test="companyId != null">
+				company_id,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="creatorId != null">
+				creator_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updatorId != null">
+				updator_id,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="nickName != null">
+				#{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="passwd != null">
+				#{passwd,jdbcType=VARCHAR},
+			</if>
+			<if test="headImg != null">
+				#{headImg,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneNumber != null">
+				#{phoneNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=INTEGER},
+			</if>
+			<if test="companyId != null">
+				#{companyId,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="creatorId != null">
+				#{creatorId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=BIGINT},
+			</if>
+			<if test="updatorId != null">
+				#{updatorId,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=BIGINT},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="com.winterframework.logistics.common.entity.User">
+		update lm_user
+		<set>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="nickName != null">
+				nick_name = #{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="passwd != null">
+				passwd = #{passwd,jdbcType=VARCHAR},
+			</if>
+			<if test="headImg != null">
+				head_img = #{headImg,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneNumber != null">
+				phone_number = #{phoneNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=INTEGER},
+			</if>
+			<if test="companyId != null">
+				company_id = #{companyId,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="creatorId != null">
+				creator_id = #{creatorId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=BIGINT},
+			</if>
+			<if test="updatorId != null">
+				updator_id = #{updatorId,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=BIGINT},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="getByUserName" parameterType="hashmap" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_user
+		where user_name = #{userName,jdbcType=VARCHAR}
+	</select>
+
+</mapper>

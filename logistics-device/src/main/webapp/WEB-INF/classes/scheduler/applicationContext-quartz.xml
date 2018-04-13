@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context.xsd">
+	<bean id="deviceLocationParseGpsTask" class="com.winterframework.logistics.device.service.scheduler.task.DeviceLocationParseGpsTask"></bean>
+	<bean id="deviceLocationParseGpsJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.winterframework.logistics.device.service.scheduler.DetailQuartzStateJobBean</value>
+		</property>
+		<property name="durability" value="true"/>
+		<property name="jobDataAsMap">
+			<map>
+				
+				<entry key="targetObject" value="deviceLocationParseGpsTask"/>
+				
+				<entry key="targetMethod" value="execute" />
+			</map>
+		</property>
+	</bean>
+
+
+	<!-- 地址数据采集 -->
+	<bean id="deviceLocationParseGpsTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+		
+			<ref bean="deviceLocationParseGpsJob" />
+		</property>
+		
+		<property name="cronExpression">
+			<value>0/10 * * * * ?</value>
+		</property>
+	</bean>
+	<bean id="deviceLocationParseBtsTask" class="com.winterframework.logistics.device.service.scheduler.task.DeviceLocationParseBtsTask"></bean>
+	<bean id="deviceLocationParseBtsJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.winterframework.logistics.device.service.scheduler.DetailQuartzStateJobBean</value>
+		</property>
+		<property name="durability" value="true"/>
+		<property name="jobDataAsMap">
+			<map>
+				
+				<entry key="targetObject" value="deviceLocationParseBtsTask"/>
+				
+				<entry key="targetMethod" value="execute" />
+			</map>
+		</property>
+	</bean>
+
+
+	<!-- 地址数据采集 -->
+	<bean id="deviceLocationParseBtsTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="deviceLocationParseBtsJob" />
+		</property>
+		
+		<property name="cronExpression">
+			<value>0/10 * * * * ?</value>
+		</property>
+	</bean>
+	
+	<bean id="deviceOnffTask" class="com.winterframework.logistics.device.service.scheduler.task.DeviceOnffTask"></bean>
+	<bean id="deviceOnffJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.winterframework.logistics.device.service.scheduler.DetailQuartzStateJobBean</value>
+		</property>
+		<property name="durability" value="true"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="targetObject" value="deviceOnffTask"/>
+				<entry key="targetMethod" value="execute" />
+			</map>
+		</property>
+	</bean>
+
+
+	<!-- 设备状态更新 -->
+	<bean id="deviceOnffTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+		
+			<ref bean="deviceOnffJob" />
+		</property>
+		
+		<property name="cronExpression">
+			<value>0/10 * * * * ?</value>
+		</property>
+	</bean>
+	<bean id="deviceCmdTask" class="com.winterframework.logistics.device.service.scheduler.task.DeviceCmdTask"></bean>
+	<bean id="deviceCmdJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.winterframework.logistics.device.service.scheduler.DetailQuartzStateJobBean</value>
+		</property>
+		<property name="durability" value="true"/>
+		<property name="jobDataAsMap">
+			<map>
+				
+				<entry key="targetObject" value="deviceCmdTask"/>
+				
+				<entry key="targetMethod" value="execute" />
+			</map>
+		</property>
+	</bean>
+
+
+	<!-- 地址数据采集 -->
+	<bean id="deviceCmdTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+		
+			<ref bean="deviceCmdJob" />
+		</property>
+		
+		<property name="cronExpression">
+			<value>0/5 * * * * ?</value>
+		</property>
+	</bean>
+	<bean id="deviceLocationSemiTask" class="com.winterframework.logistics.device.service.scheduler.task.DeviceLocationSemiTask"></bean>
+	<bean id="deviceLocationSemiJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.winterframework.logistics.device.service.scheduler.DetailQuartzStateJobBean</value>
+		</property>
+		<property name="durability" value="true"/>
+		<property name="jobDataAsMap">
+			<map>
+				
+				<entry key="targetObject" value="deviceLocationSemiTask"/>
+				
+				<entry key="targetMethod" value="execute" />
+			</map>
+		</property>
+	</bean>
+
+
+	<!-- 地址数据采集 -->
+	<bean id="deviceLocationSemiTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+		
+			<ref bean="deviceLocationSemiJob" />
+		</property>
+		
+		<property name="cronExpression">
+			<value>0/10 * * * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- 任务调度入口 -->
+	<bean autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<!-- 任务列表，可以配置多个任务加入到该List -->
+		<property name="triggers">
+			<list>
+				<ref bean="deviceLocationParseGpsTrigger"/>
+				<ref bean="deviceLocationParseBtsTrigger"/>
+				<ref bean="deviceOnffTrigger"/>
+				<ref bean="deviceCmdTrigger"/>
+				<!-- <ref bean="deviceLocationSemiTrigger"/>   -->
+			</list>
+		</property>
+		<!-- 启动时延期3秒开始任务 -->
+		<!--这个是必须的，QuartzScheduler 延时启动，应用启动完后 QuartzScheduler 再启动 -->
+		<property name="startupDelay" value="3" />
+		<property name="configLocation" value="classpath:scheduler/quartz.properties" />
+		<!--这个是可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了 -->
+		<property name="overwriteExistingJobs" value="true" />
+	</bean>	
+</beans>

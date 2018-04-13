@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"
+  "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+<configuration>
+	<typeHandlers>
+		<typeHandler javaType="boolean" jdbcType="VARCHAR"
+			handler="com.winterframework.orm.dal.ibatis3.type.YesNoTypeHandler" />
+		<typeHandler handler="org.apache.ibatis.type.DateTypeHandler"
+			javaType="java.util.Date" jdbcType="TIMESTAMP" />
+	</typeHandlers>
+
+
+	<plugins>
+
+		<plugin interceptor="com.winterframework.orm.page.plugin.OffsetLimitInterceptor">
+			<property name="dialectClass"
+				value="com.winterframework.orm.dialect.MySQLDialect" />
+		</plugin>
+	</plugins>
+	<mappers>
+		<mapper resource="sqlmap/base/PtlTestMapper.xml" />
+		<mapper resource="sqlmap/base/PtlBizMapper.xml" />
+		<mapper resource="sqlmap/base/PtlBizTypeMapper.xml" />
+		<mapper resource="sqlmap/base/PtlCompanyMapper.xml" />
+		<mapper resource="sqlmap/base/PtlQuotationMapper.xml" />
+		<mapper resource="sqlmap/base/PtlUserMapper.xml" />
+		<mapper resource="sqlmap/base/PtlNewsMapper.xml" />
+	</mappers>
+
+</configuration>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winterframework.logistics.portal.entity.QuotationOperLog">
+	<resultMap id="BaseResultMap"
+		type="com.winterframework.logistics.portal.entity.QuotationOperLog">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, quotation_id as quotationId, from_status as fromStatus,
+		to_status as toStatus, remark, creator_id as creatorId, create_time as
+		createTime
+	</sql>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="BaseResultMap"
+		flushCache="false">
+		select
+		<include refid="Base_Column_List" />
+		from pt_quotation_oper_log
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<select id="getByIds" parameterType="list" resultMap="BaseResultMap"
+		flushCache="false">
+		select
+		<include refid="Base_Column_List" />
+		from pt_quotation_oper_log
+		where id in
+		<foreach item="item" index="index" collection="list" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+	<select id="getMaxTimeByattribute"
+		parameterType="com.winterframework.logistics.portal.entity.QuotationOperLog"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM pt_quotation_oper_log
+		 <![CDATA[
+		where create_time =(
+		SELECT MAX(create_time)
+		FROM pt_quotation_oper_log
+		WHERE quotation_id=#{quotationId}
+		)
+		 ]]>
+	</select>
+	<delete id="delete" parameterType="java.lang.Long">
+		delete from
+		pt_quotation_oper_log
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert"
+		parameterType="com.winterframework.logistics.portal.entity.QuotationOperLog"
+		useGeneratedKeys="true" keyProperty="id" flushCache="true">
+		insert into
+		pt_quotation_oper_log (id, quotation_id, from_status,
+		to_status,
+		remark, creator_id,
+		create_time)
+		values (#{id,jdbcType=INTEGER},
+		#{quotationId,jdbcType=INTEGER},
+		#{fromStatus,jdbcType=INTEGER},
+		#{toStatus,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR},
+		#{creatorId,jdbcType=INTEGER},
+		#{createTime,jdbcType=BIGINT})
+	</insert>
+
+	<update id="update"
+		parameterType="com.winterframework.logistics.portal.entity.QuotationOperLog">
+		update pt_quotation_oper_log
+		<set>
+			<if test="quotationId != null">
+				quotation_id =#{quotationId,jdbcType=INTEGER},
+			</if>
+			<if test="fromStatus != null">
+				from_status =#{fromStatus,jdbcType=INTEGER},
+			</if>
+			<if test="toStatus != null">
+				to_status =#{toStatus,jdbcType=INTEGER},
+			</if>
+			<if test="creatorId != null">
+				creator_id = #{creatorId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time =#{createTime,jdbcType=BIGINT}
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

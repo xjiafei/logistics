@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="com.winterframework.logistics.common.entity.DeviceLocationSemi">
+	<resultMap id="BaseResultMap" type="com.winterframework.logistics.common.entity.DeviceLocationSemi">
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+	        	id as id,
+	        	imei as imei,
+	        	longitude as longitude,
+	        	latitude as latitude,
+	        	radius as radius,
+	        	distance as distance,
+	        	address as address,
+	        	time_begin as timeBegin,
+	        	time_end as timeEnd,
+	        	source_type as sourceType,
+	        	source_id as sourceId,
+	        	status as status,
+	        	handle_status as handleStatus,
+	        	remark as remark,
+	        	creator_id as creatorId,
+	        	create_time as createTime,
+	        	updator_id as updatorId,
+	        	update_time as updateTime
+	</sql>
+		<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+		<insert id="insert" parameterType="com.winterframework.logistics.common.entity.DeviceLocationSemi" 
+			useGeneratedKeys="true" keyProperty="id" 
+		 flushCache="true">
+	        INSERT INTO
+	        lm_device_location_semi (
+	        	imei ,
+	        	longitude ,
+	        	latitude ,
+	        	radius,
+	        	distance,
+	        	address,
+	        	time_begin,
+	        	time_end ,
+	        	source_type,
+	        	source_id ,
+	        	status,
+	        	handle_status,
+	        	remark ,
+	        	creator_id ,
+	        	create_time
+	        ) VALUES (
+	        	#{imei,javaType=string,jdbcType=VARCHAR} ,
+	        	#{longitude,javaType=double,jdbcType=DECIMAL} ,
+	        	#{latitude,javaType=double,jdbcType=DECIMAL} ,
+	        	#{radius,javaType=integer,jdbcType=INTEGER} ,
+	        	#{distance,javaType=integer,jdbcType=INTEGER} ,
+	        	#{address,javaType=string,jdbcType=VARCHAR} ,
+	        	#{timeBegin,javaType=long,jdbcType=DECIMAL} ,
+	        	#{timeEnd,javaType=long,jdbcType=DECIMAL} ,
+	        	#{sourceType,javaType=integer,jdbcType=INTEGER} ,
+	        	#{sourceId,javaType=long,jdbcType=DECIMAL} ,
+	        	#{status,javaType=integer,jdbcType=INTEGER} ,
+	        	#{handleStatus,javaType=integer,jdbcType=INTEGER} ,
+	        	#{remark,javaType=string,jdbcType=VARCHAR} ,
+	        	#{creatorId,javaType=long,jdbcType=DECIMAL} ,
+	        	#{createTime,javaType=long,jdbcType=DECIMAL} 
+	        )
+		</insert>
+	    
+		<update id="update" parameterType="com.winterframework.logistics.common.entity.DeviceLocationSemi">
+	    <![CDATA[
+	        UPDATE lm_device_location_semi SET
+		        imei = #{imei,javaType=string,jdbcType=VARCHAR} ,
+		        longitude = #{longitude,javaType=double,jdbcType=DECIMAL} ,
+		        latitude = #{latitude,javaType=double,jdbcType=DECIMAL} ,
+		        radius=#{radius,javaType=integer,jdbcType=INTEGER} ,
+	        	distance=#{distance,javaType=integer,jdbcType=INTEGER} ,
+	        	address=#{address,javaType=string,jdbcType=VARCHAR} ,
+	        	time_begin=#{timeBegin,javaType=long,jdbcType=DECIMAL} ,
+	        	time_end=#{timeEnd,javaType=long,jdbcType=DECIMAL} ,
+	        	source_type=#{sourceType,javaType=integer,jdbcType=INTEGER} ,
+	        	source_id=#{sourceId,javaType=long,jdbcType=DECIMAL} ,
+	        	status=#{status,javaType=integer,jdbcType=INTEGER} ,
+	        	handle_status=#{handleStatus,javaType=integer,jdbcType=INTEGER} ,
+		        remark = #{remark,javaType=string,jdbcType=VARCHAR} ,
+		        updator_id = #{updatorId,javaType=long,jdbcType=DECIMAL} ,
+		        update_time = #{updateTime,javaType=long,jdbcType=DECIMAL}
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+		</update>
+	   <delete id="delete" parameterType="java.lang.Long">
+	        delete from lm_device_location_semi where id = #{id} 
+	    </delete>   
+	    <select id="getById" parameterType="long" resultMap="BaseResultMap" flushCache="false">
+			select <include refid="Base_Column_List" />
+		    <![CDATA[
+			    from lm_device_location_semi 
+		        where 
+		        id = #{id} 
+		    ]]>
+		</select>	
+		<select id="getByIds" parameterType="list"  resultMap="BaseResultMap" flushCache="false">
+			select <include refid="Base_Column_List" />
+			    from lm_device_location_semi 
+		        where id in
+				<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+#{item}				</foreach>					
+		</select>	
+</mapper>

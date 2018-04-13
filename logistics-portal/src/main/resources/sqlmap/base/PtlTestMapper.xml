@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="com.winterframework.logistics.portal.entity.Test">
+	<resultMap id="BaseResultMap"
+		type="com.winterframework.logistics.portal.entity.Test">
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		id as id,
+		remark as remark,
+		creator_id as creatorId,
+		create_time as createTime,
+		updator_id as updatorId,
+		update_time as updateTime
+	</sql>
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="insert" parameterType="com.winterframework.logistics.portal.entity.Test"
+		useGeneratedKeys="true" keyProperty="id" flushCache="true">
+		INSERT INTO
+		lm_test (
+		remark ,
+		creator_id ,
+		create_time
+		) VALUES (
+		#{remark,javaType=string,jdbcType=VARCHAR} ,
+		#{creatorId,javaType=long,jdbcType=DECIMAL} ,
+		#{createTime,javaType=long,jdbcType=DECIMAL}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.winterframework.logistics.portal.entity.Test">
+		UPDATE lm_test SET
+		remark =#{remark,javaType=string,jdbcType=VARCHAR} ,
+		updator_id = #{updatorId,javaType=long,jdbcType=DECIMAL} ,
+		update_time = #{updateTime,javaType=long,jdbcType=DECIMAL}
+		WHERE
+		id = #{id}
+	</update>
+	<delete id="delete" parameterType="java.lang.Long">
+		delete from lm_test where id = #{id}
+	</delete>
+	<select id="getById" parameterType="long" resultMap="BaseResultMap"
+		flushCache="false">
+		select
+		<include refid="Base_Column_List" />
+		    <![CDATA[
+			    from lm_test 
+		        where 
+		        id = #{id} 
+		    ]]>
+	</select>
+	<select id="getByIds" parameterType="list" resultMap="BaseResultMap"
+		flushCache="false">
+		select
+		<include refid="Base_Column_List" />
+		from lm_test
+		where id in
+		<foreach item="item" index="index" collection="list" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+</mapper>

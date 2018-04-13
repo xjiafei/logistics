@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打印病历</title>
+    <link rel="stylesheet" type="" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .proposal .proposal-word {
+            margin: 15px auto;
+            border: solid 1px #ddd;
+            width: 700px;
+            height: 700px;
+            padding: 0px 20px;
+            position: relative;
+        }
+        
+        .proposal .proposal-word h4 {
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            margin-bottom: 15px;
+            border-bottom: solid 1px #DDD;
+        }
+        
+        .proposal .proposal-word .row {
+            margin-bottom: 20px;
+        }
+        
+        .proposal .P-bottomBorder {
+            width: 658px;
+            background: #DDD;
+            height: 1px;
+            position: absolute;
+            bottom: 70px;
+            left: 22px;
+        }
+        
+        .proposal .P-bottomData {
+            position: absolute;
+            bottom: 40px;
+            left: 22px;
+            width: 658px;
+        }
+        
+        .proposal .print-btn {
+            position: absolute;
+            top: 10px;
+            right: -70px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='proposal'>
+        <div class='proposal-word'>
+            <!--打印按钮-->
+            <h4>诊疗建议</h4>
+            <div>
+                <div class='row'>
+                    <div class='col-md-3'>
+                        <span>姓名：</span><span>王美眉</span>
+                    </div>
+                    <div class='col-md-3'>
+                        <span>性别：</span><span>女</span>
+                    </div>
+                    <div class='col-md-3'>
+                        <span>年龄：</span><span>56</span></div>
+                    <div class='col-md-3'>
+                        <span>编号：</span><span>201606150001</span>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>
+                        <span>主诉疾病：</span><span>高血压</span>
+                    </div>
+                    <div class='col-md-4'>
+                        <span>治疗医生：</span><span>张晓晓</span>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-6 clearfix'>
+                        <div class='pull-left'>
+                            诊断意见：
+                        </div>
+                        <div class='pull-left'>
+                            <span>1.高血压Ⅲ级 极高危</span><br>
+                            <span>2.高脂血症</span><br>
+                            <span>3.上呼吸道感染 </span><br>
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-12'>
+                        诊断意见：使用钙阻滞剂进行降压，并配合噻嗪类利尿剂。同时注意失钾，注意补充钾盐，留院观察一周，院后定期进行复查
+                    </div>
+                </div>
+                <div class='P-bottomBorder'></div>
+                <div class='P-bottomData'>
+                    <div class='pull-left'>2017-06-15</div>
+                    <div class='pull-right'>
+                        <span>协诊医生</span>
+                        <span>胡大一</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    window.print()
+    window.history.back()
+</script>
+
+</html>

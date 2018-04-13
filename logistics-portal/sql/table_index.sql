@@ -1,0 +1,11 @@
+CREATE INDEX IX_USER_NAME ON pt_user(user_name);
+CREATE INDEX IX_QUOTATION_ORIGIN_DEST ON pt_quotation(origin,dest);
+CREATE INDEX IX_QUOTATION_STATUS ON pt_quotation(status);
+CREATE INDEX IX_QUOTATION_TYPE ON pt_quotation(type);
+CREATE INDEX IX_QUOTATION_CSUSER ON pt_quotation(csuser_id);
+CREATE INDEX IX_BIZ_BIZTYPE ON pt_biz(status);
+CREATE INDEX IX_NEWS_TITLE ON pt_news(title);
+CREATE INDEX IX_NEWS_CREATETIME ON pt_news(create_time);
+CREATE INDEX IX_QUOTATIONOPERLOG_QID ON pt_quotation_oper_log(quotation_id);
+CREATE INDEX IX_CUSTOMERUSER_PHONE ON pt_customer_user(phone_number);
+CREATE INDEX IX_CUSTOMERUSER_STATUS ON pt_customer_user(status);

@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>协诊协议</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../../static/css/x.css">
+  <link rel="stylesheet" href="../../static/css/base.css">
+</head>
+<style scoped>
+  .matchlessHeader {
+    height: 50px;
+    width: 100%;
+    z-index: 111;
+    background: #23262E;
+    min-width: 1200px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    color: white;
+  }
+  .center{width: 80%;margin: auto;padding: 40px;}
+  .matchlessHeader .img {
+    width: 230px;
+    height: 100%;
+    padding: 10px 60px 10px 40px;
+    color: #fff;
+    line-height: 30px;
+  }
+
+  .matchlessHeader .img img {
+    width: 30px;
+  }
+
+  .matchlessHeader .img span {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .chooseNav ul .navLi {
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 20px;
+  }
+
+  .userMes .userHelp,
+  .userMes .userName,
+  .userMes .userNews {
+    padding: 15px;
+    cursor: pointer;
+  }
+
+  .userMes .userHelp {
+    margin-right: 20px;
+  }
+
+  .boldText{
+    font-weight:bold;
+  }
+  .row.especiallyRow{
+    margin-bottom:30px
+  }
+  .textCard p{ font-size: 14px;line-height: 30px;padding-top:10px;}
+  .textCardChard p{ padding: 5px;padding-left: 20px;font-size: 12px;}
+  .textCard h4{padding-top: 30px;font-weight: bold}
+  .textCardChard p{ padding: 5px;padding-left: 20px;font-size: 12px;line-height: 25px;}
+  h4{padding-top: 30px;font-weight: bold}
+  h5{font-weight: bold;padding-top: 20px;}
+  .codeBox p{text-align: center;}
+  .codeBox p.text{margin-bottom: 20px;line-height: 40px;font-size: 14px;height: 40px;}
+  .codeBox .imgBox {width: 200px;height: 200px; border-radius: 0px;margin: auto}
+  .wexi{}
+  .payBox{ width:400px;margin: auto;margin-bottom: 30px;cursor: pointer}
+  .check{ width:400px;margin: auto;margin-bottom: 30px;}
+  i.rede{ color: red }
+  .sucsse{padding-top:20px;font-size: 16px;font-weight:bold;padding-bottom: 20px; }
+  .goWay{color:#6886d4}
+  .goWay span{margin: 0px 10px ;}
+  .pay{display: block;width: 80px;height: 50px;border: 1px solid #f0f0f0;margin: auto;text-align: center;line-height: 50px;}
+  .invalid{width: 500px;margin: auto;padding: 50px;}
+  .invalid p{font-size: 24px;font-weight: bold}
+
+  /*.userName a{
+      text-decoration:none;
+    }*/
+</style>
+<body>
+<div class="matchlessHeader clearfix">
+  <div class='img pull-left clearfix' style="min-width: 300px;">
+    <img src="../../../static/img/logo-now.png" class='pull-left' alt="">
+    <span class='pull-left'>胡大一共享诊所</span>
+  </div>
+  <div class='chooseNav pull-left clearfix'>
+    <ul class='clearfix'>
+      <li v-for='item in treeTab' class='navLi pull-left' @click='DeliveryTreeTab(item)'>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="center" style="padding-top:80px; ">
+  <div class='O-bottom-excle'>
+    <!-- Nav tabs -->
+    <nav class="nav boder4" style="margin-top:20px; ">
+      <ul class="nav nav-tabs">
+        <li>
+          <a  class="active">患者病历</a>
+        </li>
+      </ul>
+    </nav>
+    <div class='tab-content patientDetails'style="margin-top:20px; ">
+      <div class="panel panel-default" v-for=" (recordObject,index) in recordList">
+        <div class="panel-heading  clearfix" role="tab" :id="recordObject.id">
+          <h4 class="panel-title">
+            <a role="button" class='pull-right ' :class="recordObject.id" data-toggle="collapse" data-parent="#accordion" :href="'#'+recordObject.id+'1'" aria-expanded="true" :aria-controls="recordObject.id">
+              <button type="button" class="btn btn-primary btn-sm glyphicon" :class="{'glyphicon-menu-down':arrowRection[index],'glyphicon-menu-right':(!arrowRection[index])}" @click='arrow(index)'></button>
+            </a>
+            <div class='row'>
+              <div class='col-md-3'>
+                <!--<span>创建时间：</span>-->
+                <span>{{recordObject.createdWhen}}</span>
+              </div>
+              <div class='col-md-3'>
+                <span>主治医生：</span>
+                <span>{{recordObject.doctorName}}</span>
+              </div>
+              <div class='col-md-3'>
+                <!--<span>就诊地：</span>-->
+                <!--<span>{{recordObject.hospitalName}}</span>-->
+              </div>
+              <div class='col-md-2'>
+                <!--<span>病历{{index+1}}</span>-->
+              </div>
+            </div>
+          </h4>
+        </div>
+        <div :id="recordObject.id+'1'" class="panel-collapse collapse" :class="{'in':index==0}" role="tabpanel" :aria-labelledby="recordObject.id">
+          <div class="panel-body">
+            <div class='row'>
+              <div class='col-md-1'>主诉</div>
+              <div class='col-md-11'>{{recordObject.chiefComplaint}}</div>
+            </div>
+            <div class='row'>
+              <div class='col-md-1'>现病史</div>
+              <div class='col-md-11'>
+                {{recordObject.history}}
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-md-1'>既往史</div>
+              <div class='col-md-11'>
+                <span>{{recordObject.pastMedicalHistory}}</span>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-md-1'>个人史</div>
+              <div class='col-md-11'>
+                {{recordObject.personalHistory}}
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-md-1'>传染史</div>
+              <div class='col-md-11'>{{recordObject.infectionHistory}}</div>
+            </div>
+            <div class='row'>
+              <div class='col-md-1'>过敏史</div>
+              <div class='col-md-11'>{{recordObject.allergyHistory}}</div>
+            </div>
+            <div class='row'>
+              <div class='col-md-1'>家族史</div>
+              <div class='col-md-11'>{{recordObject.familyHistory}}</div>
+            </div>
+            <div class='row'>
+              <div class='col-md-1'>检查</div>
+              <div class='col-md-11'>
+                {{recordObject.recordCheck}}
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-md-1'>
+                辅助检查
+              </div>
+              <div class='col-md-11'>
+                {{recordObject.auxiliaryCheck}}
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-md-1'>影像</div>
+              <div class='col-md-11'>
+                <div class='imgbox'>
+                  <img v-for='imageUrl in recordObject.attachments' @click='blowUp(imageUrl)' :src="imageUrl.path" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+ var Vue = new Vue({
+    el: '#app',
+   data:function() {
+     return{
+
+     }
+   },
+   mounted(){
+
+   },
+   methods:{
+
+
+
+
+   },
+   created:function(){
+
+   },
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winterframework.logistics.common.entity.CompanyCity">
+	<resultMap id="BaseResultMap"
+		type="com.winterframework.logistics.common.entity.CompanyCity">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="company_id" jdbcType="INTEGER" property="companyId" />
+		<result column="city_id" jdbcType="INTEGER" property="cityId" />
+		<result column="remark" jdbcType="VARCHAR" property="remark" />
+		<result column="creator_id" jdbcType="INTEGER" property="creatorId" />
+		<result column="create_time" jdbcType="BIGINT" property="createTime" />
+		<result column="updator_id" jdbcType="INTEGER" property="updatorId" />
+		<result column="update_time" jdbcType="BIGINT" property="updateTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, company_id, city_id, remark, creator_id, create_time, updator_id,
+		update_time
+	</sql>
+	<select id="getByAttribute"
+		parameterType="com.winterframework.logistics.common.entity.CompanyCity"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_company_city
+		where true
+		<if test="id != null">
+			and id = #{id,jdbcType=INTEGER}
+		</if>
+		<if test="companyId != null">
+			and company_id = #{companyId,jdbcType=INTEGER}
+		</if>
+		<if test="cityId != null">
+			and city_id = #{cityId,jdbcType=INTEGER}
+		</if>
+		<if test="remark != null">
+			and remark = #{remark,jdbcType=VARCHAR}
+		</if>
+		<if test="creatorId != null">
+			and creator_id = #{creatorId,jdbcType=INTEGER}
+		</if>
+		<if test="createTime != null">
+			and create_time = #{createTime,jdbcType=BIGINT}
+		</if>
+		<if test="updatorId != null">
+			and updator_id = #{updatorId,jdbcType=INTEGER}
+		</if>
+		<if test="updateTime != null">
+			and update_time = #{updateTime,jdbcType=BIGINT}
+		</if>
+	</select>
+
+	<delete id="delete" parameterType="long">
+		delete from lm_company_city
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteCity" parameterType="long">
+		delete from lm_company_city
+		where company_id=#{companyId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert"
+		parameterType="com.winterframework.logistics.common.entity.CompanyCity">
+		insert into lm_company_city
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="companyId != null">
+				company_id,
+			</if>
+			<if test="cityId != null">
+				city_id,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="creatorId != null">
+				creator_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updatorId != null">
+				updator_id,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="companyId != null">
+				#{companyId,jdbcType=INTEGER},
+			</if>
+			<if test="cityId != null">
+				#{cityId,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="creatorId != null">
+				#{creatorId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=BIGINT},
+			</if>
+			<if test="updatorId != null">
+				#{updatorId,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=BIGINT},
+			</if>
+		</trim>
+	</insert>
+	
+	<insert id="insertLists" parameterType="java.util.List">
+		insert into lm_company_city
+				(id,
+				company_id,
+				city_id,
+				remark,
+				creator_id,
+				create_time,
+				updator_id,
+				update_time)
+		values
+		  <foreach collection="list" index="index" item="item" separator=",">   
+				(#{item.id},
+				#{item.companyId},
+				#{item.cityId},
+				#{item.remark},
+				#{item.creatorId},
+				#{item.createTime},
+				#{item.updatorId},
+				#{item.updateTime})
+		  </foreach>
+	</insert>
+	<update id="update"
+		parameterType="com.winterframework.logistics.common.entity.CompanyCity">
+		update lm_company_city
+		<set>
+			<if test="companyId != null">
+				company_id = #{companyId,jdbcType=INTEGER},
+			</if>
+			<if test="cityId != null">
+				city_id = #{cityId,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="creatorId != null">
+				creator_id = #{creatorId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=BIGINT},
+			</if>
+			<if test="updatorId != null">
+				updator_id = #{updatorId,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=BIGINT},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>
